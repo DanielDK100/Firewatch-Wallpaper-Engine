@@ -39,7 +39,7 @@ export default {
     this.now = moment().locale(this.locale)
     this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
 
-    this.preloadImages(96)
+    this.preloadImages(96, this.convertToSeconds(3))
     //this.wallpaperPropertyListener() NOT WORKING
     this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
   },
@@ -47,12 +47,14 @@ export default {
     loadImage(imageName) {
       return require('./assets/images/' + imageName + '.png')
     },
-    preloadImages: function(numberOfImages) {
+    preloadImages: function(numberOfImages, seconds) {
       const fromNight = moment('1_0', 'k_m').locale(this.locale);
-      for (let i = 1; i <= numberOfImages; i++) {
-        this.preloadedImages.push(fromNight.format('k_m'))
-        fromNight.add(15, 'minutes');
-      }
+      setTimeout(() => {
+        for (let i = 1; i <= numberOfImages; i++) {
+          this.preloadedImages.push(fromNight.format('k_m'))
+          fromNight.add(15, 'minutes');
+        }
+      }, seconds)
     },
     wallpaperPropertyListener: function() {
       window.wallpaperPropertyListener = {
@@ -79,15 +81,14 @@ export default {
       }
     },
     startInterval: function(roundedTime, now, seconds) {
-      const self = this
       this.setBackground(roundedTime)
       this.setClock(now)
-      setInterval(function() {
-        self.now = moment().locale(self.locale)
-        self.roundedTime = self.round(self.now, moment.duration(15, 'minutes'), 'ceil')
+      setInterval(() => {
+        this.now = moment().locale(this.locale)
+        this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
 
-        self.setBackground(self.roundedTime)
-        self.setClock(self.now)
+        this.setBackground(this.roundedTime)
+        this.setClock(this.now)
       }, seconds)
     },
     setBackground: function(roundedTime) {
