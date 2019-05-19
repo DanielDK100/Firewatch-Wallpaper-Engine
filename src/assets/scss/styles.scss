@@ -8,7 +8,6 @@ body {
     height: 100vh;
     background: $background-color center/cover no-repeat fixed;
     transition: background .5s ease-in-out;
-    overflow: hidden;
     #preload-images {
       display: none;
     }
@@ -22,9 +21,9 @@ body {
       animation: slide 1s forwards;
       cursor: default;
       position: absolute;
-      right: -100vw; top: 2vw;
+      right: -100vw; top: 2.5vw;
       #clock {
-        font-size: 4.5vw;
+        font-size: 4vw;
         letter-spacing: 0.3vw;
       }
       #weather {
@@ -39,6 +38,6 @@ body {
 }
 @keyframes slide {
   100% {
-    right: 2vw;
+    right: 2.5vw;
   }
 }
