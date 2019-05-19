@@ -1,19 +1,19 @@
 <template>
   <div id="app" :style="{ backgroundImage: 'url(' + loadImage(background) + ')' }">
-    <div id="preload-images">
-      <img v-for="preloadedImage in preloadedImages" :key="preloadedImage" :src="loadImage(preloadedImage)" alt="Image">
-    </div>
+    <preloaded-images :preloadedImages="preloadedImages"></preloaded-images>
     <div id="container" v-tilt="{reverse: true, scale: 1.1}">
-      <div id="clock" v-show="showClock" v-text="clock"></div>
-      <div id="weather-container">
-        <div id="weather"></div>
-      </div>
+      <clock :showClock="showClock" :clock="clock"></clock>
+      <weather :showWeather="showClock" :weather="weather"></weather>
     </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
+import PreloadedImages from './components/PreloadedImages.vue'
+import Clock from './components/Clock.vue'
+import Weather from './components/Weather.vue'
+
 export default {
   name: 'app',
   data() {
@@ -24,11 +24,16 @@ export default {
       background: '5_0',
       locale: 'da',
       timeFormat: 'LTS',
-      clock: null,
       showClock: true,
+      clock: null,
+      showWeather: true,
+      weather: null,
     }
   },
   components: {
+    PreloadedImages,
+    Clock,
+    Weather,
   },
   mounted() {
     this.now = moment().locale(this.locale)
@@ -39,8 +44,8 @@ export default {
     this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
   },
   methods: {
-    loadImage(imagePath) {
-      return require('./assets/images/' + imagePath + '.png')
+    loadImage(imageName) {
+      return require('./assets/images/' + imageName + '.png')
     },
     preloadImages: function(numberOfImages) {
       const fromNight = moment('1_0', 'k_m').locale(this.locale);
