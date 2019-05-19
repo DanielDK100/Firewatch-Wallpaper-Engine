@@ -40,7 +40,7 @@ export default {
     this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
 
     this.preloadImages(96)
-    this.wallpaperPropertyListener()
+    //this.wallpaperPropertyListener() NOT WORKING
     this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
   },
   methods: {
