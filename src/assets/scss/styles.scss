@@ -1,41 +1,44 @@
-::selection {
-  background: #FCDEC9;
-}
+$background-color: #431951;
+$primary-text-color: #FCDEC9;
+$primary-font-family: 'Montserrat', sans-serif;
+
 body {
-  margin: 0px; padding: 0px;
   overflow: hidden;
+  #app {
+    height: 100vh;
+    background: $background-color center/cover no-repeat fixed;
+    transition: background .5s ease-in-out;
+    overflow: hidden;
+    #preload-images {
+      display: none;
+    }
+    #container {
+      font-family: $primary-font-family;
+      font-weight: 600;
+      font-style: normal;
+      text-align: right;
+      text-shadow: 3px 3px 3px #272727;
+      color: $primary-text-color;
+      animation: slide 1s forwards;
+      cursor: default;
+      position: absolute;
+      right: -100vw; top: 2vw;
+      #clock {
+        font-size: 4.5vw;
+        letter-spacing: 0.3vw;
+      }
+      #weather {
+        font-size: 3vw;
+        display: inline;
+      }
+    }
+  }
 }
-#app {
-  height: 100vh;
-  background: #431951 center/cover no-repeat fixed;
-  transition: background .5s ease-in-out;
-  overflow: hidden;
-  #container {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    text-align: right;
-    text-shadow: 3px 3px 3px #272727;
-    position: absolute;
-    cursor: default;
-    color: #FCDEC9;
-    right: -600px; top: 40px;
-    animation: slide 1s forwards;
-  }
-  #preload-images {
-    display: none;
-  }
-  #clock {
-    font-size: 90px;
-    letter-spacing: 5px;
-  }
-  #weather {
-    font-size: 70px;
-    display: inline;
-  }
+::selection {
+  background: $primary-text-color;
 }
 @keyframes slide {
   100% {
-    right: 70px;
+    right: 2vw;
   }
 }
