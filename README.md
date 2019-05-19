@@ -1,4 +1,4 @@
-# hello-world
+# Firewatch real time day/night cycle
 
 ## Project setup
 ```

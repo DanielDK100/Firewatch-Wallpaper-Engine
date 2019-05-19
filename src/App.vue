@@ -1,7 +1,7 @@
 <template>
   <div id="app" :style="{ backgroundImage: 'url(' + loadImage(background) + ')' }">
     <div id="preload-images">
-      <img v-for="preloadedImage in preloadedImages" :src="loadImage(preloadedImage)">
+      <img v-for="preloadedImage in preloadedImages" :key="preloadedImage" :src="loadImage(preloadedImage)" alt="Image">
     </div>
     <div id="container" v-tilt="{reverse: true, scale: 1.1}">
       <div id="clock" v-show="showClock" v-text="clock"></div>
@@ -34,7 +34,7 @@ export default {
     this.now = moment().locale(this.locale)
     this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
 
-    this.preloadImages(96, this.convertToSeconds(1))
+    this.preloadImages(96)
     this.wallpaperPropertyListener()
     this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
   },
@@ -42,7 +42,7 @@ export default {
     loadImage(imagePath) {
       return require('./assets/images/' + imagePath + '.png')
     },
-    preloadImages: function(numberOfImages, seconds) {
+    preloadImages: function(numberOfImages) {
       const fromNight = moment('1_0', 'k_m').locale(this.locale);
       for (let i = 1; i <= numberOfImages; i++) {
         this.preloadedImages.push(fromNight.format('k_m'))
