@@ -48,11 +48,11 @@ export default {
       return require('./assets/images/' + imageName + '.png')
     },
     preloadImages: function(numberOfImages, seconds) {
-      const fromNight = moment('1_0', 'k_m').locale(this.locale);
+      const fromNight = moment('1_0', 'k_m').locale(this.locale)
       setTimeout(() => {
         for (let i = 1; i <= numberOfImages; i++) {
           this.preloadedImages.push(fromNight.format('k_m'))
-          fromNight.add(15, 'minutes');
+          fromNight.add(15, 'minutes')
         }
       }, seconds)
     },
