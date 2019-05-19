@@ -1,0 +1,41 @@
+::selection {
+  background: #FCDEC9;
+}
+body {
+  margin: 0px; padding: 0px;
+  overflow: hidden;
+}
+#app {
+  height: 100vh;
+  background: #431951 center/cover no-repeat fixed;
+  transition: background .5s ease-in-out;
+  overflow: hidden;
+  #container {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    text-align: right;
+    text-shadow: 3px 3px 3px #272727;
+    position: absolute;
+    cursor: default;
+    color: #FCDEC9;
+    right: -600px; top: 40px;
+    animation: slide 1s forwards;
+  }
+  #preload-images {
+    display: none;
+  }
+  #clock {
+    font-size: 90px;
+    letter-spacing: 5px;
+  }
+  #weather {
+    font-size: 70px;
+    display: inline;
+  }
+}
+@keyframes slide {
+  100% {
+    right: 70px;
+  }
+}

@@ -1,0 +1,59 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "Real time Firewatch wallpaper that changes the day/night cycle as the day progresses.",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"isClockEnabled" : 
+			{
+				"order" : 100,
+				"text" : "Enable clock",
+				"type" : "bool",
+				"value" : true
+			},
+			"isTwentyFourHour" : 
+			{
+				"condition" : "isClockEnabled.value == true",
+				"order" : 101,
+				"text" : "24 hour clock",
+				"type" : "bool",
+				"value" : true
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0.12156862745098039 0.12156862745098039 0.36470588235294116"
+			},
+			"timeFormat" : 
+			{
+				"condition" : "isClockEnabled.value == true",
+				"options" : 
+				[
+					{
+						"label" : "HH:mm:ss",
+						"value" : "LTS"
+					},
+					{
+						"label" : "HH:mm",
+						"value" : "LT"
+					}
+				],
+				"order" : 102,
+				"text" : "Time format",
+				"type" : "combo",
+				"value" : "LTS"
+			}
+		}
+	},
+	"monetization" : false,
+	"preview" : "preview.png",
+	"tags" : [ "Relaxing" ],
+	"title" : "Firewatch real time day/night cycle",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : "1744170047"
+}
