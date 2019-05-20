@@ -55,7 +55,7 @@ export default {
     this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
 
     this.preloadImages(96, this.convertToSeconds(3))
-    //this.wallpaperPropertyListener() NOT WORKING
+    this.wallpaperPropertyListener()
     this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
   },
   mounted() {
@@ -75,25 +75,26 @@ export default {
       }, seconds)
     },
     wallpaperPropertyListener: function() {
+      const self = this
       window.wallpaperPropertyListener = {
         applyUserProperties: function(properties) {
           if (properties.isClockEnabled) {
             if (properties.isClockEnabled.value) {
-              this.showClock = true
+              self.showClock = true
             }
             else {
-              this.showClock = false
+              self.showClock = false
             }
           }
           if (properties.isTwentyFourHour) {
             if (properties.isTwentyFourHour.value) {
-              this.locale = 'da'
+              self.locale = 'da'
             } else {
-              this.locale = 'en-us'
+              self.locale = 'en-us'
             }
           }
           if (properties.timeFormat) {
-            this.timeFormat = properties.timeFormat.value
+            self.timeFormat = properties.timeFormat.value
           }
         }
       }
