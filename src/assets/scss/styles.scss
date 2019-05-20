@@ -1,0 +1,44 @@
+$background-color: #431951;
+$primary-text-color: #FCDEC9;
+$primary-font-family: 'Montserrat', sans-serif;
+
+body {
+  overflow: hidden;
+  #app {
+    height: 100vh;
+    background: $background-color center/cover no-repeat fixed;
+    transition: background 1s ease-in-out;
+    #preload-images {
+      display: none;
+    }
+    #container {
+      font-family: $primary-font-family;
+      font-weight: 500;
+      font-style: normal;
+      text-align: right;
+      text-shadow: 3px 3px 1px #272727;
+      color: $primary-text-color;
+      cursor: default;
+      position: absolute;
+      right: 2vw; top: 2.5vw;
+      #clock {
+        font-size: 4vw;
+        letter-spacing: 0.3vw;
+      }
+      #weather {
+        font-size: 3vw;
+        display: inline;
+      }
+    }
+  }
+}
+::selection {
+  background: $primary-text-color;
+}
+.slide-right-enter-active {
+  transition: all .5s ease;
+}
+.slide-right-enter, .slide-fade-leave-to {
+  transform: translateX(100vh);
+  opacity: 0;
+}
