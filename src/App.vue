@@ -1,10 +1,12 @@
 <template>
-  <div id="app" :style="{ backgroundImage: 'url(' + loadImage(background) + ')' }">
+  <div id="app" :style="{backgroundImage: 'url(' + loadImage(background) + ')'}">
     <preloaded-images :preloadedImages="preloadedImages"></preloaded-images>
-    <div id="container" v-tilt="{reverse: true, scale: 1.1}">
-      <clock :showClock="showClock" :clock="clock"></clock>
-      <weather :showWeather="showClock" :weather="weather"></weather>
-    </div>
+    <transition name="slide-right">
+      <div id="container" v-show="showWidgets" v-tilt="{reverse: true, scale: 1.1}">
+        <clock :showClock="showClock" :clock="clock"></clock>
+        <weather :showWeather="showClock" :weather="weather"></weather>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -28,6 +30,7 @@ export default {
       clock: null,
       showWeather: true,
       weather: null,
+      showWidgets: false,
     }
   },
   components: {
@@ -35,13 +38,28 @@ export default {
     Clock,
     Weather,
   },
-  mounted() {
+  computed: {
+    round: function() {
+      return function (date, duration, method) {
+        return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(this.locale)
+      }
+    },
+    convertToSeconds: function() {
+      return function (seconds) {
+        return seconds * 1000
+      }
+    }
+  },
+  created() {
     this.now = moment().locale(this.locale)
     this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
 
     this.preloadImages(96, this.convertToSeconds(3))
     //this.wallpaperPropertyListener() NOT WORKING
     this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
+  },
+  mounted() {
+    this.showWidgets = true
   },
   methods: {
     loadImage(imageName) {
@@ -96,12 +114,6 @@ export default {
     },
     setClock: function(now) {
       this.clock = now.format(this.timeFormat)
-    },
-    round: function(date, duration, method) {
-      return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(this.locale)
-    },
-    convertToSeconds: function(seconds) {
-      return seconds * 1000
     }
   }
 }

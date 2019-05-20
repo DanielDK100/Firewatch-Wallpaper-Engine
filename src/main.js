@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import './assets/scss/reset.scss'
-import './assets/fonts/Montserrat/stylesheet.css'
+import './assets/fonts/Montserrat/stylesheet.scss'
 import './assets/scss/styles.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'

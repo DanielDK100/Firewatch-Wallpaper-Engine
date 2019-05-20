@@ -6,7 +6,7 @@ module.exports = {
     plugins: [
       new CopyWebpackPlugin([
         { from: 'project.json', to: './' },
-        { from: 'preview.png', to: './' },
+        { from: 'src/assets/images/preview.png', to: './' },
       ])
     ]
   },
