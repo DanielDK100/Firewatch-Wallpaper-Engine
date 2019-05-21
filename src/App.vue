@@ -4,7 +4,7 @@
     <transition name="slide-right">
       <div id="container" v-show="showWidgets" v-tilt="{reverse: true, scale: 1.1}">
         <clock :showClock="showClock" :clock="clock"></clock>
-        <weather :showWeather="showClock" :weather="weather"></weather>
+        <weather :showWeather="showWeather" :temperature="temperature" :fontAwesome="fontAwesome"></weather>
       </div>
     </transition>
   </div>
@@ -12,6 +12,7 @@
 
 <script>
 import moment from 'moment'
+import { mapState } from 'vuex'
 import PreloadedImages from './components/PreloadedImages.vue'
 import Clock from './components/Clock.vue'
 import Weather from './components/Weather.vue'
@@ -26,11 +27,16 @@ export default {
       background: '5_0',
       locale: 'da',
       timeFormat: 'LTS',
+      showWidgets: false,
       showClock: true,
       clock: null,
       showWeather: true,
-      weather: null,
-      showWidgets: false,
+      temperature: 0,
+      fontAwesome: {
+        icon: 'exclamation-triangle'
+      },
+      weatherUnit: 'metric',
+      city: 'Copenhagen, Denmark'
     }
   },
   components: {
@@ -39,6 +45,7 @@ export default {
     Weather,
   },
   computed: {
+    ...mapState(['weather']),
     round: function() {
       return function (date, duration, method) {
         return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(this.locale)
@@ -48,7 +55,7 @@ export default {
       return function (seconds) {
         return seconds * 1000
       }
-    }
+    },
   },
   created() {
     this.now = moment().locale(this.locale)
@@ -56,7 +63,8 @@ export default {
 
     this.preloadImages(96, this.convertToSeconds(3))
     this.wallpaperPropertyListener()
-    this.startInterval(this.roundedTime, this.now, this.convertToSeconds(1))
+    this.startClockInterval(this.roundedTime, this.now, this.convertToSeconds(1))
+    this.startWeatherInterval(this.city, this.weatherUnit, this.convertToSeconds(10800))
   },
   mounted() {
     this.showWidgets = true
@@ -96,10 +104,26 @@ export default {
           if (properties.timeFormat) {
             self.timeFormat = properties.timeFormat.value
           }
+          if (properties.isWeatherEnabled) {
+            if (properties.isWeatherEnabled.value) {
+              self.showWeather = true
+            }
+            else {
+              self.showWeather = false
+            }
+          }
+          if (properties.weatherUnit) {
+            self.weatherUnit = properties.weatherUnit.value
+            self.loadWeather(self.city, self.weatherUnit)
+          }
+          if (properties.city) {
+            self.city = properties.city.value
+            self.loadWeather(self.city, self.weatherUnit)
+          }
         }
       }
     },
-    startInterval: function(roundedTime, now, seconds) {
+    startClockInterval: function(roundedTime, now, seconds) {
       this.setBackground(roundedTime)
       this.setClock(now)
       setInterval(() => {
@@ -115,6 +139,67 @@ export default {
     },
     setClock: function(now) {
       this.clock = now.format(this.timeFormat)
+    },
+    loadWeather: function(city, unit) {
+      this.$store.dispatch('loadWeather', {city: city, unit: unit}).then(() => {
+        this.temperature = ~~this.weather.main.temp
+        const weatherIcon = {icon: null}
+        switch (this.weather.weather[0].main) {
+          case 'Thunderstorm':
+          weatherIcon.icon = 'bolt'
+          break;
+          case 'Drizzle':
+          weatherIcon.icon = 'cloud-rain'
+          break;
+          case 'Rain':
+          weatherIcon.icon = 'cloud-rain'
+          break;
+          case 'Snow':
+          weatherIcon.icon = 'snowflake'
+          break;
+          case 'Mist':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Smoke':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Haze':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Dust':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Fog':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Sand':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Ash':
+          weatherIcon.icon = 'smog'
+          break;
+          case 'Squall':
+          weatherIcon.icon = 'wind'
+          break;
+          case 'Tornado':
+          weatherIcon.icon = 'wind'
+          break;
+          case 'Clear':
+          weatherIcon.icon = 'sun'
+          break;
+          case 'Clouds':
+          weatherIcon.icon = 'cloud'
+          break;
+        }
+        this.fontAwesome = weatherIcon
+      })
+      .catch()
+    },
+    startWeatherInterval: function(city, unit, seconds) {
+      this.loadWeather(city, unit)
+      setInterval(() => {
+        this.loadWeather(city, unit)
+      }, seconds)
     }
   }
 }

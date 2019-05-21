@@ -1,6 +1,7 @@
 <template>
-  <div id="weather-container">
-    <div id="weather"></div>
+  <div  v-show="showWeather" id="weather-container">
+    <font-awesome-icon :icon="fontAwesome.icon" size="4x"></font-awesome-icon>
+    <div id="weather" v-text="temperature + ' °'"></div>
   </div>
 </template>
 
@@ -10,8 +11,11 @@ export default {
     showWeather: {
       type: Boolean,
     },
-    weather: {
-      type: String,
+    fontAwesome: {
+      type: Object,
+    },
+    temperature: {
+      type: Number,
     }
   }
 }
