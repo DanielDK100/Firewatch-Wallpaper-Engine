@@ -19,6 +19,7 @@ export default new Vuex.Store({
           commit('SET_WEATHER', weather)
           resolve()
         })
+        
         .catch(error => {
           reject(new Error(error))
         })
