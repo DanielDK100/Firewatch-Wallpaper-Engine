@@ -1,6 +1,6 @@
 <template>
   <div  v-show="showWeather" id="weather-container">
-    <font-awesome-icon :icon="fontAwesome.icon" size="4x"></font-awesome-icon>
+    <font-awesome-icon id="weather-icon" :icon="fontAwesome.icon"></font-awesome-icon>
     <div id="weather" v-text="temperature + ' °'"></div>
   </div>
 </template>

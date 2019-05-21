@@ -36,7 +36,7 @@ export default {
         icon: 'exclamation-triangle'
       },
       weatherUnit: 'metric',
-      city: 'Copenhagen, Denmark'
+      city: 'Europe'
     }
   },
   components: {
@@ -56,6 +56,11 @@ export default {
         return seconds * 1000
       }
     },
+    generateRandomNumber: function() {
+      return function (minSeconds, maxSeconds) {
+        return Math.floor(Math.random() * (maxSeconds - minSeconds + 1) + minSeconds)
+      }
+    }
   },
   created() {
     this.now = moment().locale(this.locale)
@@ -64,7 +69,7 @@ export default {
     this.preloadImages(96, this.convertToSeconds(3))
     this.wallpaperPropertyListener()
     this.startClockInterval(this.roundedTime, this.now, this.convertToSeconds(1))
-    this.startWeatherInterval(this.city, this.weatherUnit, this.convertToSeconds(10800))
+    this.startWeatherInterval(this.city, this.weatherUnit, (this.convertToSeconds(10800) + this.generateRandomNumber(-500, 601)))
   },
   mounted() {
     this.showWidgets = true
@@ -116,8 +121,8 @@ export default {
             self.weatherUnit = properties.weatherUnit.value
             self.loadWeather(self.city, self.weatherUnit)
           }
-          if (properties.city) {
-            self.city = properties.city.value
+          if (properties.weatherCity) {
+            self.city = properties.weatherCity.value
             self.loadWeather(self.city, self.weatherUnit)
           }
         }
@@ -147,49 +152,49 @@ export default {
         switch (this.weather.weather[0].main) {
           case 'Thunderstorm':
           weatherIcon.icon = 'bolt'
-          break;
+          break
           case 'Drizzle':
           weatherIcon.icon = 'cloud-rain'
-          break;
+          break
           case 'Rain':
           weatherIcon.icon = 'cloud-rain'
-          break;
+          break
           case 'Snow':
           weatherIcon.icon = 'snowflake'
-          break;
+          break
           case 'Mist':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Smoke':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Haze':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Dust':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Fog':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Sand':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Ash':
           weatherIcon.icon = 'smog'
-          break;
+          break
           case 'Squall':
           weatherIcon.icon = 'wind'
-          break;
+          break
           case 'Tornado':
           weatherIcon.icon = 'wind'
-          break;
+          break
           case 'Clear':
           weatherIcon.icon = 'sun'
-          break;
+          break
           case 'Clouds':
           weatherIcon.icon = 'cloud'
-          break;
+          break
         }
         this.fontAwesome = weatherIcon
       })

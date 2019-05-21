@@ -7,7 +7,7 @@ body {
   #app {
     height: 100vh;
     background: $background-color center/cover no-repeat fixed;
-    transition: background 1s ease-in-out;
+    transition: background 3s ease-in-out;
     #preload-images {
       display: none;
     }
@@ -24,12 +24,15 @@ body {
       #clock {
         font-size: 4vw;
         letter-spacing: 0.3vw;
-        margin-bottom: 20px;
+        margin-bottom: 1vw;
+      }
+      #weather-icon {
+        font-size: 3.5vw;
       }
       #weather {
         font-size: 3.5vw;
         display: inline;
-        margin-left: 15px;
+        margin-left: 1vw;
       }
     }
   }

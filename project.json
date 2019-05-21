@@ -1,85 +1,93 @@
 {
-	"contentrating" : "Everyone",
-	"description" : "Real time Firewatch wallpaper that changes the day/night cycle as the day progresses.",
-	"file" : "index.html",
-	"general" :
+	"contentrating": "Everyone",
+	"description": "Real time Firewatch wallpaper that changes the day/night cycle as the day progresses.",
+	"file": "index.html",
+	"general":
 	{
-		"properties" :
+		"properties":
 		{
-			"schemecolor" :
+			"schemecolor":
 			{
-				"order" : 0,
-				"text" : "ui_browse_properties_scheme_color",
-				"type" : "color",
-				"value" : "0.12156862745098039 0.12156862745098039 0.36470588235294116"
+				"order": 0,
+				"text": "ui_browse_properties_scheme_color",
+				"type": "color",
+				"value": "0.12156862745098039 0.12156862745098039 0.36470588235294116"
 			},
-			"isClockEnabled" :
+			"isClockEnabled":
 			{
-				"order" : 2,
-				"text" : "Enable clock",
-				"type" : "bool",
-				"value" : true
+				"order": 2,
+				"text": "Enable clock",
+				"type": "bool",
+				"value": true
 			},
-			"isTwentyFourHour" :
+			"isTwentyFourHour":
 			{
-				"condition" : "isClockEnabled.value == true",
-				"order" : 3,
-				"text" : "24 hour clock",
-				"type" : "bool",
-				"value" : true
+				"condition": "isClockEnabled.value == true",
+				"order": 3,
+				"text": "24 hour clock",
+				"type": "bool",
+				"value": true
 			},
-			"timeFormat" :
+			"timeFormat":
 			{
-				"order" : 4,
-				"text" : "Time format",
-				"type" : "combo",
-				"value" : "LTS",
-				"condition" : "isClockEnabled.value == true",
-				"options" :
+				"order": 4,
+				"text": "Time format",
+				"type": "combo",
+				"value": "LTS",
+				"condition": "isClockEnabled.value == true",
+				"options":
 				[
 					{
-						"label" : "HH:mm:ss",
-						"value" : "LTS"
+						"label": "HH:mm:ss",
+						"value": "LTS"
 					},
 					{
-						"label" : "HH:mm",
-						"value" : "LT"
+						"label": "HH:mm",
+						"value": "LT"
 					}
 				]
 			},
-			"isWeatherEnabled" :
+			"isWeatherEnabled":
 			{
-				"order" : 5,
-				"text" : "Enable weather",
-				"type" : "bool",
-				"value" : true
+				"order": 5,
+				"text": "Enable weather",
+				"type": "bool",
+				"value": true
 			},
-			"weatherUnit" :
+			"weatherUnit":
 			{
-				"order" : 6,
-				"text" : "Weather units",
-				"type" : "combo",
-				"value" : "metric",
-				"condition" : "isWeatherEnabled.value == true",
-				"options" :
+				"order": 6,
+				"text": "Weather units",
+				"type": "combo",
+				"value": "metric",
+				"condition": "isWeatherEnabled.value == true",
+				"options":
 				[
 					{
-						"label" : "Metric",
-						"value" : "metric"
+						"label": "Metric",
+						"value": "metric"
 					},
 					{
-						"label" : "Imperial",
-						"value" : "imperial"
+						"label": "Imperial",
+						"value": "imperial"
 					}
 				]
+			},
+			"weatherCity":
+			{
+				"condition": "isWeatherEnabled.value == true",
+				"order": 7,
+				"text": "City name",
+				"type": "textinput",
+				"value": "Europe"
 			}
 		}
 	},
-	"monetization" : false,
-	"preview" : "preview.png",
-	"tags" : ["Relaxing"],
-	"title" : "Firewatch real time day/night cycle",
-	"type" : "web",
-	"visibility" : "public",
-	"workshopid" : "1744170047"
+	"monetization": false,
+	"preview": "preview.png",
+	"tags": ["Relaxing"],
+	"title": "Firewatch real time day/night cycle",
+	"type": "web",
+	"visibility": "public",
+	"workshopid": "1744170047"
 }
