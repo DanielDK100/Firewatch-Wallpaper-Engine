@@ -108,7 +108,7 @@ export default {
           break
           case 'Clear':
           weatherIcon.icon = 'sun'
-          if (currentHour >= 22 || currentHour <= 5) {
+          if (currentHour >= 21 || currentHour <= 5) {
             weatherIcon.icon = 'moon'
           }
           break
@@ -118,7 +118,11 @@ export default {
         }
         this.fontAwesome = weatherIcon
       })
-      .catch()
+      .catch(error => {
+        this.showWeather = false
+        // eslint-disable-next-line
+        console.log(error)
+      })
     },
     startWeatherInterval: function(city, unit, seconds) {
       this.fetchWeather(city, unit)
