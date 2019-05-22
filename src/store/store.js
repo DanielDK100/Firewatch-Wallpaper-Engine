@@ -11,7 +11,7 @@ export default new Vuex.Store({
     weather: []
   },
   actions: {
-    loadWeather({commit}, data) {
+    fetchWeather({commit}, data) {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?q=' + data.city + '&units=' + data.unit + '&appid=' + process.env.VUE_APP_WEATHER_API_KEY)
         .then(r => r.data)

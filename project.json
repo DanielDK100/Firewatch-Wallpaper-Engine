@@ -15,7 +15,7 @@
 			},
 			"isClockEnabled":
 			{
-				"order": 2,
+				"order": 1,
 				"text": "Enable clock",
 				"type": "bool",
 				"value": true
@@ -23,14 +23,14 @@
 			"isTwentyFourHour":
 			{
 				"condition": "isClockEnabled.value == true",
-				"order": 3,
+				"order": 2,
 				"text": "24 hour clock",
 				"type": "bool",
 				"value": true
 			},
 			"timeFormat":
 			{
-				"order": 4,
+				"order": 3,
 				"text": "Time format",
 				"type": "combo",
 				"value": "LTS",
@@ -49,14 +49,14 @@
 			},
 			"isWeatherEnabled":
 			{
-				"order": 5,
+				"order": 4,
 				"text": "Enable weather",
 				"type": "bool",
 				"value": true
 			},
 			"weatherUnit":
 			{
-				"order": 6,
+				"order": 5,
 				"text": "Weather units",
 				"type": "combo",
 				"value": "metric",
@@ -76,7 +76,7 @@
 			"weatherCity":
 			{
 				"condition": "isWeatherEnabled.value == true",
-				"order": 7,
+				"order": 6,
 				"text": "City name",
 				"type": "textinput",
 				"value": "Europe"
