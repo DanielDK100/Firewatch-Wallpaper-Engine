@@ -20,7 +20,7 @@ export default {
       fontAwesome: {
         icon: 'exclamation-triangle'
       },
-      weatherUnit: 'metric',
+      unit: 'metric',
       city: 'Europe'
     }
   },
@@ -38,31 +38,31 @@ export default {
         }
       }
       if (newProperties.weatherUnit) {
-        this.weatherUnit = newProperties.weatherUnit.value
-        this.fetchWeather(this.city, this.weatherUnit, newProperties)
+        this.unit = newProperties.weatherUnit.value
+        this.fetchWeather(this.city, this.unit, newProperties)
       }
       if (newProperties.weatherCity) {
         this.city = newProperties.weatherCity.value
-        this.fetchWeather(this.city, this.weatherUnit, newProperties)
+        this.fetchWeather(this.city, this.unit, newProperties)
       }
     }
   },
   created() {
-    this.startWeatherInterval(this.city, this.weatherUnit, (this.convertToSeconds(10800) + this.generateRandomNumber(-500, 601)))
+     this.startWeatherInterval(this.city, this.unit, (this.convertToSeconds(10800) + this.generateRandomNumber(-500, 601)))
   },
   methods: {
     fetchWeather: function(city, unit, newProperties = null) {
       if (newProperties) {
         if (newProperties.weatherUnit) {
           unit = newProperties.weatherUnit.value
-          this.weatherUnit = unit
+          this.unit = newProperties.weatherUnit.value
         }
         if (newProperties.weatherCity) {
           city = newProperties.weatherCity.value
-          this.city = city
+          this.city = newProperties.weatherCity.value
         }
       }
-      this.$store.dispatch('fetchWeather', {city: city, unit: unit}).then(() => {
+      this.$store.dispatch('fetchWeather', {city: this.city, unit: this.unit}).then(() => {
         this.showWeather = true
         this.temperature = ~~this.weather.main.temp
         const weatherIcon = {icon: null}
