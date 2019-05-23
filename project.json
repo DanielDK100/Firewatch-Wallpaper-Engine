@@ -9,14 +9,14 @@
 			"schemecolor":
 			{
 				"order": 0,
-				"text": "ui_browse_properties_scheme_color",
+				"text": "<strong>ui_browse_properties_scheme_color",
 				"type": "color",
 				"value": "0.12156862745098039 0.12156862745098039 0.36470588235294116"
 			},
 			"isClockEnabled":
 			{
 				"order": 1,
-				"text": "Enable clock",
+				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
@@ -24,14 +24,14 @@
 			{
 				"condition": "isClockEnabled.value == true",
 				"order": 2,
-				"text": "24 hour clock",
+				"text": "<strong>24 hour clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"timeFormat":
 			{
 				"order": 3,
-				"text": "Time format",
+				"text": "<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "LTS",
 				"condition": "isClockEnabled.value == true",
@@ -50,14 +50,14 @@
 			"isWeatherEnabled":
 			{
 				"order": 4,
-				"text": "Enable weather",
+				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"weatherUnit":
 			{
 				"order": 5,
-				"text": "Weather units",
+				"text": "<strong>Weather units:</strong>",
 				"type": "combo",
 				"value": "metric",
 				"condition": "isWeatherEnabled.value == true",
@@ -77,9 +77,9 @@
 			{
 				"condition": "isWeatherEnabled.value == true",
 				"order": 6,
-				"text": "City name",
+				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find Copenhagen in Denmark)</em>",
 				"type": "textinput",
-				"value": "Europe"
+				"value": "Copenhagen, DK"
 			}
 		}
 	},

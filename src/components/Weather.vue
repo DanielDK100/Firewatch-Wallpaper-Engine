@@ -21,7 +21,7 @@ export default {
         icon: 'exclamation-triangle'
       },
       unit: 'metric',
-      city: 'Europe'
+      city: 'Copenhagen, DK'
     }
   },
   computed: {
