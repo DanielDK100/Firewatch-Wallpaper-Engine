@@ -63,6 +63,7 @@ export default {
         }
       }
       this.$store.dispatch('fetchWeather', {city: city, unit: unit}).then(() => {
+        this.showWeather = true
         this.temperature = ~~this.weather.main.temp
         const weatherIcon = {icon: null}
         const currentHour = moment().format('k')
