@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       locale: 'da',
-      showClock: false,
+      showClock: true,
       now: null,
       clock: null,
       roundedTime: null,
