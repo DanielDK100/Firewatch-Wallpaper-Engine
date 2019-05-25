@@ -11,20 +11,17 @@ export default {
         return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(this.locale)
       }
     },
-    convertToSeconds: function() {
-      return function (seconds) {
-        return seconds * 1000
-      }
-    },
     generateRandomNumber: function() {
-      return function (minSeconds, maxSeconds) {
-        return Math.floor(Math.random() * (maxSeconds - minSeconds + 1) + minSeconds)
+      return function (minMinutes, maxMinutes) {
+        const minMinutesToMilliSeconds = moment.duration(minMinutes, 'minutes').asMilliseconds()
+        const maxMinutesToMilliSeconds = moment.duration(maxMinutes, 'minutes').asMilliseconds()
+        return Math.floor(Math.random() * (maxMinutesToMilliSeconds - minMinutesToMilliSeconds + 1) + minMinutesToMilliSeconds)
       }
     }
   },
   methods: {
     loadImage(imageName) {
-      return require('../assets/images/' + imageName + '.png')
+      return require('../assets/images/' + imageName)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{backgroundImage: 'url(' + loadImage(background) + ')'}">
+  <div id="app" :style="{backgroundImage: 'url(' + loadImage(background + '.png') + ')'}">
     <preloaded-images></preloaded-images>
     <transition name="slide-right">
       <div id="container" v-show="showWidgets" v-tilt="{reverse: true, scale: 1.1}">

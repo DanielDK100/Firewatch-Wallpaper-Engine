@@ -46,10 +46,10 @@ export default {
   created() {
     this.now = moment().locale(this.locale)
     this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
-    this.startClockInterval(this.roundedTime, this.now, this.convertToSeconds(1))
+    this.startClockInterval(this.roundedTime, this.now, moment.duration(1, 'seconds').asMilliseconds())
   },
   methods: {
-    startClockInterval: function(roundedTime, now, seconds) {
+    startClockInterval: function(roundedTime, now, duration) {
       this.setBackground(roundedTime)
       this.setClock(now)
       setInterval(() => {
@@ -58,7 +58,7 @@ export default {
 
         this.setBackground(this.roundedTime)
         this.setClock(this.now)
-      }, seconds)
+      }, duration)
     },
     setClock: function(now) {
       this.clock = now.format(this.timeFormat)

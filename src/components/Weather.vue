@@ -43,7 +43,7 @@ export default {
     }
   },
   created() {
-    this.startWeatherInterval(this.city, this.unit, (this.convertToSeconds(14400) + this.generateRandomNumber(-500, 601)))
+    this.startWeatherInterval(this.city, this.unit, moment.duration(4, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
   },
   methods: {
     fetchWeather: function(city, unit, newProperties = null) {
@@ -123,11 +123,11 @@ export default {
         })
       }
     },
-    startWeatherInterval: function(city, unit, seconds) {
+    startWeatherInterval: function(city, unit, duration) {
       this.fetchWeather(city, unit)
       setInterval(() => {
         this.fetchWeather(city, unit)
-      }, seconds)
+      }, duration)
     }
   }
 }
