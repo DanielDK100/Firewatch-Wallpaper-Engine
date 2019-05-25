@@ -15,7 +15,7 @@ export default {
   props: ['properties'],
   data() {
     return {
-      showWeather: true,
+      showWeather: false,
       temperature: 0,
       fontAwesome: {
         icon: 'exclamation-triangle'
@@ -30,12 +30,7 @@ export default {
   watch: {
     properties: function(newProperties) {
       if (newProperties.isWeatherEnabled) {
-        if (newProperties.isWeatherEnabled.value) {
-          this.showWeather = true
-        }
-        else {
-          this.showWeather = false
-        }
+        this.showWeather = newProperties.isWeatherEnabled.value
       }
       if (newProperties.weatherUnit) {
         this.unit = newProperties.weatherUnit.value
@@ -48,82 +43,85 @@ export default {
     }
   },
   created() {
-     this.startWeatherInterval(this.city, this.unit, (this.convertToSeconds(10800) + this.generateRandomNumber(-500, 601)))
+    this.startWeatherInterval(this.city, this.unit, (this.convertToSeconds(14400) + this.generateRandomNumber(-500, 601)))
   },
   methods: {
     fetchWeather: function(city, unit, newProperties = null) {
-      if (newProperties) {
-        if (newProperties.weatherUnit) {
-          unit = newProperties.weatherUnit.value
-          this.unit = newProperties.weatherUnit.value
-        }
-        if (newProperties.weatherCity) {
-          city = newProperties.weatherCity.value
-          this.city = newProperties.weatherCity.value
-        }
-      }
-      this.$store.dispatch('fetchWeather', {city: this.city, unit: this.unit}).then(() => {
-        this.showWeather = true
-        this.temperature = ~~this.weather.main.temp
-        const weatherIcon = {icon: null}
-        const currentHour = moment().format('k')
-        switch (this.weather.weather[0].main) {
-          case 'Thunderstorm':
-          weatherIcon.icon = 'bolt'
-          break
-          case 'Drizzle':
-          weatherIcon.icon = 'cloud-rain'
-          break
-          case 'Rain':
-          weatherIcon.icon = 'cloud-rain'
-          break
-          case 'Snow':
-          weatherIcon.icon = 'snowflake'
-          break
-          case 'Mist':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Smoke':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Haze':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Dust':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Fog':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Sand':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Ash':
-          weatherIcon.icon = 'smog'
-          break
-          case 'Squall':
-          weatherIcon.icon = 'wind'
-          break
-          case 'Tornado':
-          weatherIcon.icon = 'wind'
-          break
-          case 'Clear':
-          weatherIcon.icon = 'sun'
-          if (currentHour >= 21 || currentHour <= 5) {
-            weatherIcon.icon = 'moon'
+      if (this.showWeather) {
+        if (newProperties) {
+          if (newProperties.weatherUnit) {
+            unit = newProperties.weatherUnit.value
+            this.unit = newProperties.weatherUnit.value
           }
-          break
-          case 'Clouds':
-          weatherIcon.icon = 'cloud'
-          break
+          if (newProperties.weatherCity) {
+            city = newProperties.weatherCity.value
+            this.city = newProperties.weatherCity.value
+          }
         }
-        this.fontAwesome = weatherIcon
-      })
-      .catch(error => {
-        this.showWeather = false
-        // eslint-disable-next-line
-        console.log(error)
-      })
+        const weatherIcon = {icon: 'exclamation-triangle'}
+        this.$store.dispatch('fetchWeather', {city: this.city, unit: this.unit}).then(() => {
+          this.showWeather = true
+          this.temperature = ~~this.weather.main.temp
+          const currentHour = moment().format('k')
+          switch (this.weather.weather[0].main) {
+            case 'Thunderstorm':
+            weatherIcon.icon = 'bolt'
+            break
+            case 'Drizzle':
+            weatherIcon.icon = 'cloud-rain'
+            break
+            case 'Rain':
+            weatherIcon.icon = 'cloud-rain'
+            break
+            case 'Snow':
+            weatherIcon.icon = 'snowflake'
+            break
+            case 'Mist':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Smoke':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Haze':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Dust':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Fog':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Sand':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Ash':
+            weatherIcon.icon = 'smog'
+            break
+            case 'Squall':
+            weatherIcon.icon = 'wind'
+            break
+            case 'Tornado':
+            weatherIcon.icon = 'wind'
+            break
+            case 'Clear':
+            weatherIcon.icon = 'sun'
+            if (currentHour >= 21 || currentHour <= 5) {
+              weatherIcon.icon = 'moon'
+            }
+            break
+            case 'Clouds':
+            weatherIcon.icon = 'cloud'
+            break
+          }
+          this.fontAwesome = weatherIcon
+        })
+        .catch(error => {
+          this.fontAwesome = weatherIcon
+          this.temperature = 0
+          // eslint-disable-next-line
+          console.log(error)
+        })
+      }
     },
     startWeatherInterval: function(city, unit, seconds) {
       this.fetchWeather(city, unit)

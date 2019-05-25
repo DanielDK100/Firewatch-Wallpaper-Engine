@@ -44,6 +44,22 @@
 					{
 						"label": "HH:mm",
 						"value": "LT"
+					},
+					{
+						"label": "M D YYYY",
+						"value": "l"
+					},
+					{
+						"label": "MMMM D YYYY",
+						"value": "ll"
+					},
+					{
+						"label": "D MMMM YYYY HH:mm",
+						"value": "lll"
+					},
+					{
+						"label": "DDD MMM YYYY HH:mm",
+						"value": "llll"
 					}
 				]
 			},
@@ -52,7 +68,7 @@
 				"order": 4,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
-				"value": true
+				"value": false
 			},
 			"weatherUnit":
 			{

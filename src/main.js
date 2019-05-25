@@ -13,7 +13,6 @@ Vue.config.productionTip = false
 Vue.use(VueTilt)
 
 library.add(faExclamationTriangle, faCloud, faBolt, faCloudRain, faSnowflake, faSmog, faWind, faSun, faMoon)
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
