@@ -15,7 +15,7 @@ export default {
   props: ['properties'],
   data() {
     return {
-      showWeather: false,
+      showWeather: true,
       temperature: 0,
       fontAwesome: {
         icon: 'exclamation-triangle'

@@ -14,12 +14,12 @@
     "axios": "^0.18.0",
     "copy-webpack-plugin": "^5.0.3",
     "core-js": "^2.6.5",
-    "google-fonts-webpack-plugin": "^0.4.4",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-moment": "^4.0.0",
+    "vue-particles": "^1.0.9",
     "vue-tilt.js": "^1.0.2",
     "vuex": "^3.1.1"
   },

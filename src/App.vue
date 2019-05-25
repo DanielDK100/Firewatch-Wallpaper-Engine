@@ -1,5 +1,17 @@
 <template>
   <div id="app" :style="{backgroundImage: 'url(' + loadImage(background + '.png') + ')'}">
+    <vue-particles
+    color="#FCDEC9"
+    :particleOpacity="0.2"
+    :particlesNumber="40"
+    shapeType="polygon"
+    :particleSize="2"
+    :lineLinked="false"
+    :moveSpeed="1"
+    :hoverEffect="false"
+    :clickEffect="true"
+    clickMode="repulse">
+    </vue-particles>
     <preloaded-images></preloaded-images>
     <transition name="slide-right">
       <div id="container" v-show="showWidgets" v-tilt="{reverse: true, scale: 1.1}">
