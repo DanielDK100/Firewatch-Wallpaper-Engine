@@ -14,7 +14,7 @@
     </vue-particles>
     <preloaded-images></preloaded-images>
     <transition name="slide-right">
-      <div id="container" v-show="showWidgets" v-tilt="{reverse: true, scale: 1.1}">
+      <div id="container" v-show="showWidgets" v-tilt="{reverse: true}">
         <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
         <weather :properties="properties" @properties="setProperties"></weather>
       </div>

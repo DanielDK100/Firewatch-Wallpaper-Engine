@@ -7,8 +7,8 @@ export default {
   },
   computed: {
     round: function() {
-      return function (date, duration, method) {
-        return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(this.locale)
+      return function (date, duration, method, locale = this.locale) {
+        return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(locale)
       }
     },
     generateRandomNumber: function() {

@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     preloadImages: function(numberOfImages, seconds) {
-      const fromNight = moment('1_0', 'k_m')
+      const fromNight = moment('1_0', 'k_m').locale('en-gb')
       setTimeout(() => {
         for (let i = 1; i <= numberOfImages; i++) {
           this.preloadedImages.push({source: fromNight.format('k_m') + '.png', alt: fromNight.format('k:m')})

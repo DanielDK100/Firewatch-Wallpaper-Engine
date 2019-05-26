@@ -11,12 +11,12 @@ export default {
   props: ['properties'],
   data() {
     return {
-      locale: 'da',
       showClock: true,
       now: null,
       clock: null,
       roundedTime: null,
-      timeFormat: 'LTS',
+      locale: 'en-gb',
+      timeFormat: 'lll',
       newProperties: null
     }
   },
@@ -30,13 +30,8 @@ export default {
           this.showClock = false
         }
       }
-      if (newProperties.isTwentyFourHour) {
-        if (newProperties.isTwentyFourHour.value) {
-          this.locale = 'da'
-        }
-        else {
-          this.locale = 'en-us'
-        }
+      if (newProperties.locale) {
+        this.locale = newProperties.locale.value
       }
       if (newProperties.timeFormat) {
         this.timeFormat = newProperties.timeFormat.value
@@ -45,7 +40,7 @@ export default {
   },
   created() {
     this.now = moment().locale(this.locale)
-    this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
+    this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
     this.startClockInterval(this.roundedTime, this.now, moment.duration(1, 'seconds').asMilliseconds())
   },
   methods: {
@@ -54,7 +49,7 @@ export default {
       this.setClock(now)
       setInterval(() => {
         this.now = moment().locale(this.locale)
-        this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil')
+        this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
 
         this.setBackground(this.roundedTime)
         this.setClock(this.now)

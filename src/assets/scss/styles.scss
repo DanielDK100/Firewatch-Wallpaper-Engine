@@ -20,18 +20,14 @@ body {
       color: $primary-text-color;
       cursor: default;
       position: absolute;
-      right: 2vw; top: 2.5vw;
+      right: 2vw; top: 2vw;
       white-space: pre;
+      font-size: 3.5vw;
       #clock {
-        font-size: 4vw;
-        letter-spacing: 0.3vw;
         margin-bottom: 1vw;
-      }
-      #weather-icon {
-        font-size: 3.5vw;
+        letter-spacing: 0.3vw;
       }
       #weather {
-        font-size: 3.5vw;
         display: inline;
         margin-left: 1vw;
       }

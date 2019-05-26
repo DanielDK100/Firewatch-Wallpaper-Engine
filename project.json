@@ -20,43 +20,570 @@
 				"type": "bool",
 				"value": true
 			},
-			"isTwentyFourHour":
-			{
-				"condition": "isClockEnabled.value == true",
-				"order": 2,
-				"text": "<strong>24 hour clock:</strong>",
-				"type": "bool",
-				"value": true
-			},
-			"timeFormat":
+			"locale":
 			{
 				"order": 3,
-				"text": "<strong>Time format:</strong>",
+				"text": "<strong>Locale:</strong>",
 				"type": "combo",
-				"value": "LTS",
+				"value": "en-gb",
 				"condition": "isClockEnabled.value == true",
 				"options":
 				[
 					{
-						"label": "HH:mm:ss",
+						"label": "Afrikaans",
+						"value": "af"
+					},
+					{
+						"label": "Albanian",
+						"value": "sq"
+					},
+					{
+						"label": "Arabic",
+						"value": "ar"
+					},
+					{
+						"label": "Arabic (Algeria)",
+						"value": "ar-dz"
+					},
+					{
+						"label": "Arabic (Kuwait)",
+						"value": "ar-kw"
+					},
+					{
+						"label": "Arabic (Lybia)",
+						"value": "ar-ly"
+					},
+					{
+						"label": "Arabic (Morocco)",
+						"value": "ar-ma"
+					},
+					{
+						"label": "Arabic (Saudi Arabia)",
+						"value": "ar-sa"
+					},
+					{
+						"label": "Arabic (Tunisia)",
+						"value": "ar-tn"
+					},
+					{
+						"label": "Armenian",
+						"value": "hy-am"
+					},
+					{
+						"label": "Azerbaijani",
+						"value": "az"
+					},
+					{
+						"label": "Bambara",
+						"value": "bm"
+					},
+					{
+						"label": "Basque",
+						"value": "eu"
+					},
+					{
+						"label": "Belarusian",
+						"value": "be"
+					},
+					{
+						"label": "Bengali",
+						"value": "bn"
+					},
+					{
+						"label": "Bosnian",
+						"value": "bs"
+					},
+					{
+						"label": "Breton",
+						"value": "br"
+					},
+					{
+						"label": "Bulgarian",
+						"value": "bg"
+					},
+					{
+						"label": "Burmese",
+						"value": "my"
+					},
+					{
+						"label": "Cambodian",
+						"value": "km"
+					},
+					{
+						"label": "Catalan",
+						"value": "ca"
+					},
+					{
+						"label": "Central Atlas Tamazight",
+						"value": "tzm"
+					},
+					{
+						"label": "Central Atlas Tamazight Latin",
+						"value": "tzm-latn"
+					},
+					{
+						"label": "Chinese (China)",
+						"value": "zh-cn"
+					},
+					{
+						"label": "Chinese (Hong Kong)",
+						"value": "zh-hk"
+					},
+					{
+						"label": "Chinese (Taiwan)",
+						"value": "zh-tw"
+					},
+					{
+						"label": "Chuvash",
+						"value": "cv"
+					},
+					{
+						"label": "Croatian",
+						"value": "hr"
+					},
+					{
+						"label": "Czech",
+						"value": "cs"
+					},
+					{
+						"label": "Danish",
+						"value": "da"
+					},
+					{
+						"label": "Dutch",
+						"value": "nl"
+					},
+					{
+						"label": "Dutch (Belgium)",
+						"value": "nl-be"
+					},
+					{
+						"label": "English (Australia)",
+						"value": "en-au"
+					},
+					{
+						"label": "English (Canada)",
+						"value": "en-ca"
+					},
+					{
+						"label": "English (Ireland)",
+						"value": "en-ie"
+					},
+					{
+						"label": "English (Israel)",
+						"value": "en-il"
+					},
+					{
+						"label": "English (New Zealand)",
+						"value": "en-nz"
+					},
+					{
+						"label": "English (Singapore)",
+						"value": "en-SG"
+					},
+					{
+						"label": "English (UK)",
+						"value": "en-gb"
+					},
+					{
+						"label": "English (US)",
+						"value": "en"
+					},
+					{
+						"label": "Esperanto",
+						"value": "eo"
+					},
+					{
+						"label": "Estonian",
+						"value": "et"
+					},
+					{
+						"label": "Faroese",
+						"value": "fo"
+					},
+					{
+						"label": "Finnish",
+						"value": "fi"
+					},
+					{
+						"label": "French",
+						"value": "fr"
+					},
+					{
+						"label": "French (Canada)",
+						"value": "fr-ca"
+					},
+					{
+						"label": "French (Switzerland)",
+						"value": "fr-ch"
+					},
+					{
+						"label": "Frisian",
+						"value": "fy"
+					},
+					{
+						"label": "Galician",
+						"value": "gl"
+					},
+					{
+						"label": "Georgian",
+						"value": "ka"
+					},
+					{
+						"label": "German",
+						"value": "de"
+					},
+					{
+						"label": "German (Austria)",
+						"value": "de-at"
+					},
+					{
+						"label": "German (Switzerland)",
+						"value": "de-ch"
+					},
+					{
+						"label": "Greek",
+						"value": "el"
+					},
+					{
+						"label": "Gujarati",
+						"value": "gu"
+					},
+					{
+						"label": "Hebrew",
+						"value": "he"
+					},
+					{
+						"label": "Hindi",
+						"value": "hi"
+					},
+					{
+						"label": "Hungarian",
+						"value": "hu"
+					},
+					{
+						"label": "Icelandic",
+						"value": "is"
+					},
+					{
+						"label": "Indonesian",
+						"value": "id"
+					},
+					{
+						"label": "Irish or Irish Gaelic",
+						"value": "ga"
+					},
+					{
+						"label": "Italian",
+						"value": "it"
+					},
+					{
+						"label": "Italian (Switzerland)",
+						"value": "it-ch"
+					},
+					{
+						"label": "Japanese",
+						"value": "ja"
+					},
+					{
+						"label": "Javanese",
+						"value": "jv"
+					},
+					{
+						"label": "Kannada",
+						"value": "kn"
+					},
+					{
+						"label": "Kazakh",
+						"value": "kk"
+					},
+					{
+						"label": "Klingon",
+						"value": "tlh"
+					},
+					{
+						"label": "Konkani Latin script",
+						"value": "gom-latn"
+					},
+					{
+						"label": "Korean",
+						"value": "ko"
+					},
+					{
+						"label": "Kurdish",
+						"value": "ku"
+					},
+					{
+						"label": "Kyrgyz",
+						"value": "ky"
+					},
+					{
+						"label": "Lao",
+						"value": "lo"
+					},
+					{
+						"label": "Latvian",
+						"value": "lv"
+					},
+					{
+						"label": "Lithuanian",
+						"value": "lt"
+					},
+					{
+						"label": "Luxembourgish",
+						"value": "lb"
+					},
+					{
+						"label": "Macedonian",
+						"value": "mk"
+					},
+					{
+						"label": "Malay",
+						"value": "ms-my"
+					},
+					{
+						"label": "Malay",
+						"value": "ms"
+					},
+					{
+						"label": "Malayalam",
+						"value": "ml"
+					},
+					{
+						"label": "Maldivian",
+						"value": "dv"
+					},
+					{
+						"label": "Maltese (Malta)",
+						"value": "mt"
+					},
+					{
+						"label": "Maori",
+						"value": "mi"
+					},
+					{
+						"label": "Marathi",
+						"value": "mr"
+					},
+					{
+						"label": "Mongolian",
+						"value": "mn"
+					},
+					{
+						"label": "Montenegrin",
+						"value": "me"
+					},
+					{
+						"label": "Nepalese",
+						"value": "ne"
+					},
+					{
+						"label": "Northern Sami",
+						"value": "se"
+					},
+					{
+						"label": "Norwegian Bokmål",
+						"value": "nb"
+					},
+					{
+						"label": "Nynorsk",
+						"value": "nn"
+					},
+					{
+						"label": "Persian",
+						"value": "fa"
+					},
+					{
+						"label": "Polish",
+						"value": "pl"
+					},
+					{
+						"label": "Portuguese",
+						"value": "pt"
+					},
+					{
+						"label": "Portuguese (Brazil)",
+						"value": "pt-br"
+					},
+					{
+						"label": "Pseudo",
+						"value": "x-pseudo"
+					},
+					{
+						"label": "Punjabi (India)",
+						"value": "pa-in"
+					},
+					{
+						"label": "Romanian",
+						"value": "ro"
+					},
+					{
+						"label": "Russian",
+						"value": "ru"
+					},
+					{
+						"label": "Scottish Gaelic",
+						"value": "gd"
+					},
+					{
+						"label": "Serbian",
+						"value": "sr"
+					},
+					{
+						"label": "Serbian Cyrillic",
+						"value": "sr-cyrl"
+					},
+					{
+						"label": "Sindhi",
+						"value": "sd"
+					},
+					{
+						"label": "Sinhalese",
+						"value": "si"
+					},
+					{
+						"label": "Slovak",
+						"value": "sk"
+					},
+					{
+						"label": "Slovenian",
+						"value": "sl"
+					},
+					{
+						"label": "Spanish",
+						"value": "es"
+					},
+					{
+						"label": "Spanish (Dominican Republic)",
+						"value": "es-do"
+					},
+					{
+						"label": "Spanish (US)",
+						"value": "es-us"
+					},
+					{
+						"label": "Swahili",
+						"value": "sw"
+					},
+					{
+						"label": "Swedish",
+						"value": "sv"
+					},
+					{
+						"label": "Tagalog (Philippines)",
+						"value": "tl-ph"
+					},
+					{
+						"label": "Tajik",
+						"value": "tg"
+					},
+					{
+						"label": "Talossan",
+						"value": "tzl"
+					},
+					{
+						"label": "Tamil",
+						"value": "ta"
+					},
+					{
+						"label": "Telugu",
+						"value": "te"
+					},
+					{
+						"label": "Tetun Dili (East Timor)",
+						"value": "tet"
+					},
+					{
+						"label": "Thai",
+						"value": "th"
+					},
+					{
+						"label": "Tibetan",
+						"value": "bo"
+					},
+					{
+						"label": "Turkish",
+						"value": "tr"
+					},
+					{
+						"label": "Ukrainian",
+						"value": "uk"
+					},
+					{
+						"label": "Urdu",
+						"value": "ur"
+					},
+					{
+						"label": "Uyghur (China)",
+						"value": "ug-cn"
+					},
+					{
+						"label": "Uzbek",
+						"value": "uz"
+					},
+					{
+						"label": "Uzbek Latin",
+						"value": "uz-latn"
+					},
+					{
+						"label": "Vietnamese",
+						"value": "vi"
+					},
+					{
+						"label": "Welsh",
+						"value": "cy"
+					},
+					{
+						"label": "Yoruba Nigeria",
+						"value": "yo"
+					},
+					{
+						"label": "siSwati",
+						"value": "ss"
+					}
+				]
+			},
+			"timeFormat":
+			{
+				"order": 4,
+				"text": "<strong>Time format:</strong>",
+				"type": "combo",
+				"value": "lll",
+				"condition": "isClockEnabled.value == true",
+				"options":
+				[
+					{
+						"label": "H:mm:ss",
 						"value": "LTS"
 					},
 					{
-						"label": "HH:mm",
+						"label": "H:mm",
 						"value": "LT"
+					},
+					{
+						"label": "MMM D YYYY",
+						"value": "ll"
+					},
+					{
+						"label": "MMM D YYYY H:mm",
+						"value": "lll"
+					},
+					{
+						"label": "ddd, MMM D YYYY H:mm",
+						"value": "llll"
 					}
 				]
 			},
 			"isWeatherEnabled":
 			{
-				"order": 4,
+				"order": 5,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
 			"weatherUnit":
 			{
-				"order": 5,
+				"order": 6,
 				"text": "<strong>Weather units:</strong>",
 				"type": "combo",
 				"value": "metric",
@@ -76,10 +603,10 @@
 			"weatherCity":
 			{
 				"condition": "isWeatherEnabled.value == true",
-				"order": 6,
-				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find Copenhagen in Denmark)</em>",
+				"order": 7,
+				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
-				"value": "Copenhagen, DK"
+				"value": "London, UK"
 			}
 		}
 	},

@@ -15,13 +15,13 @@ export default {
   props: ['properties'],
   data() {
     return {
-      showWeather: true,
+      showWeather: false,
       temperature: 0,
       fontAwesome: {
         icon: 'exclamation-triangle'
       },
       unit: 'metric',
-      city: 'Copenhagen, DK'
+      city: 'London, UK'
     }
   },
   computed: {
@@ -34,12 +34,11 @@ export default {
       }
       if (newProperties.weatherUnit) {
         this.unit = newProperties.weatherUnit.value
-        this.fetchWeather(this.city, this.unit, newProperties)
       }
       if (newProperties.weatherCity) {
         this.city = newProperties.weatherCity.value
-        this.fetchWeather(this.city, this.unit, newProperties)
       }
+      this.fetchWeather(this.city, this.unit, newProperties)
     }
   },
   created() {
