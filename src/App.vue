@@ -44,17 +44,20 @@ export default {
     Weather
   },
   created() {
-    const self = this
-    window.wallpaperPropertyListener = {
-      applyUserProperties: function(properties) {
-        self.properties = properties
-      }
-    }
+    this.initializeWallpaperPropertyListener()
   },
   mounted() {
     this.showWidgets = true
   },
   methods: {
+    initializeWallpaperPropertyListener() {
+      const self = this
+      window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+          self.properties = properties
+        }
+      }
+    },
     setProperties(properties) {
       this.properties = properties
     },
