@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{backgroundImage: 'url(' + loadImage(background + '.png') + ')'}">
+  <div id="app" :style="{backgroundImage: 'url(' + loadImage(background + '.webp') + ')'}">
     <vue-particles
     color="#FCDEC9"
     :particleOpacity="0.2"
