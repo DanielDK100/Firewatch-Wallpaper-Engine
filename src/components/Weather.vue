@@ -42,7 +42,7 @@ export default {
     }
   },
   created() {
-    this.startWeatherInterval(this.city, this.unit, moment.duration(4, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
+    this.startWeatherInterval(this.city, this.unit, moment.duration(3, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
   },
   methods: {
     fetchWeather: function(city, unit, newProperties = null) {
