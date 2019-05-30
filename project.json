@@ -8,16 +8,16 @@
 		{
 			"schemecolor":
 			{
-				"text": "<strong>System color</strong>",
+				"text": "<strong>System color:</strong>",
 				"type": "color",
 				"value": "0.12156862745098039 0.12156862745098039 0.36470588235294116"
 			},
 			"clockWeatherPosition":
 			{
-				"text": "<strong>Clock & weather position</strong>",
+				"text": "<strong>Clock & weather position:</strong>",
 				"type": "combo",
 				"value": "top-right",
-				"condition": "isClockEnabled.value == true || isWeatherEnabled == true",
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
 				"options":
 				[
 					{
