@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import './assets/scss/reset.scss'
+import 'reset-css'
 import './assets/fonts/Montserrat/stylesheet.scss'
 import './assets/scss/styles.scss'
 import store from './store/store.js'

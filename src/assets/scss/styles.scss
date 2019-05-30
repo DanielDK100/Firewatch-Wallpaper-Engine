@@ -2,6 +2,35 @@ $background-color: #431951;
 $primary-text-color: #FCDEC9;
 $primary-font-family: 'Montserrat', sans-serif;
 
+::selection {
+  background: $primary-text-color;
+}
+.bounce-enter-active {
+  animation: bounce-in .4s;
+}
+.bounce-leave-active {
+  animation: bounce-in .4s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
 body {
   overflow: hidden;
   #app {
@@ -11,36 +40,42 @@ body {
     #preload-images {
       display: none;
     }
+    .top-right {
+      @include position(absolute, $top: 2vw, $right: 2vw);
+      text-align: right;
+    }
+    .top-left {
+      @include position(absolute, $top: 2vw, $left: 2vw);
+      text-align: left;
+    }
+    .bottom-right {
+      @include position(absolute, $bottom: 2vw, $right: 2vw);
+      text-align: right;
+    }
+    .bottom-left {
+      @include position(absolute, $bottom: 2vw, $left: 2vw);
+      text-align: left;
+    }
     #container {
       font-family: $primary-font-family;
       font-weight: 500;
       font-style: normal;
-      text-align: right;
       text-shadow: 3px 3px 1px #272727;
       color: $primary-text-color;
       cursor: default;
-      position: absolute;
-      right: 2vw; top: 2vw;
       white-space: pre;
       font-size: 3.5vw;
       #clock {
         margin-bottom: 1vw;
         letter-spacing: 0.3vw;
       }
-      #weather {
-        display: inline;
-        margin-left: 1vw;
+      #weather-container {
+        margin-bottom: 1vw;
+        #weather {
+          display: inline;
+          margin-left: 1vw;
+        }
       }
     }
   }
-}
-::selection {
-  background: $primary-text-color;
-}
-.slide-right-enter-active {
-  transition: all .5s ease;
-}
-.slide-right-enter, .slide-fade-leave-to {
-  transform: translateX(100vh);
-  opacity: 0;
 }

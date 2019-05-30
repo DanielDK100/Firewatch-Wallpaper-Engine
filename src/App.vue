@@ -13,8 +13,8 @@
     clickMode="repulse">
     </vue-particles>
     <preloaded-images></preloaded-images>
-    <transition name="slide-right">
-      <div id="container" v-show="showWidgets" v-tilt="{reverse: true}">
+    <transition name="bounce">
+      <div id="container" v-show="showWidgets" :class="clockWeatherPosition" v-tilt="{reverse: true}">
         <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
         <weather :properties="properties" @properties="setProperties"></weather>
       </div>
@@ -35,6 +35,7 @@ export default {
     return {
       background: '5_0',
       properties: Object,
+      clockWeatherPosition: 'top-right',
       showWidgets: false
     }
   },
@@ -42,6 +43,13 @@ export default {
     PreloadedImages,
     Clock,
     Weather
+  },
+  watch: {
+    properties: function(newProperties) {
+      if (newProperties.clockWeatherPosition) {
+        this.clockWeatherPosition = newProperties.clockWeatherPosition.value
+      }
+    }
   },
   created() {
     this.initializeWallpaperPropertyListener()
