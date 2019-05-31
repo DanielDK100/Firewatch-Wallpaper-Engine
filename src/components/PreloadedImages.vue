@@ -19,14 +19,14 @@ export default {
     this.preloadImages(96, moment.duration(3, 'seconds').asMilliseconds())
   },
   methods: {
-    preloadImages: function(numberOfImages, seconds) {
+    preloadImages: function(numberOfImages, duration) {
       const fromNight = moment('1_0', 'k_m').locale('en-gb')
       setTimeout(() => {
         for (let i = 1; i <= numberOfImages; i++) {
           this.preloadedImages.push({source: fromNight.format('k_m') + '.webp', alt: fromNight.format('k:m')})
           fromNight.add(15, 'minutes')
         }
-      }, seconds)
+      }, duration)
     }
   }
 }
