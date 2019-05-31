@@ -1,7 +1,14 @@
 {
-	"contentrating": "Everyone",
-	"description": "Real time Firewatch wallpaper that changes the day/night cycle as the day progresses.",
+	"type": "web",
 	"file": "index.html",
+	"title": "Firewatch real time day/night cycle",
+	"description": "Real time Firewatch wallpaper that changes the day/night cycle as the day progresses.",
+	"preview": "preview.png",
+	"tags": ["Landscape"],
+	"contentrating": "Everyone",
+	"monetization": false,
+	"visibility": "public",
+	"workshopid": "1744170047",
 	"general":
 	{
 		"properties":
@@ -628,12 +635,5 @@
 				"value": "London, UK"
 			}
 		}
-	},
-	"monetization": false,
-	"preview": "preview.png",
-	"tags": ["Landscape"],
-	"title": "Firewatch real time day/night cycle",
-	"type": "web",
-	"visibility": "public",
-	"workshopid": "1744170047"
+	}
 }
