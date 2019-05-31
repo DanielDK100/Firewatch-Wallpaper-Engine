@@ -58,10 +58,10 @@ export default {
           }
         }
         const weatherIcon = {icon: 'exclamation-triangle'}
+        const currentHour = moment().format('k')
         this.$store.dispatch('fetchWeather', {city: this.city, unit: this.unit}).then(() => {
           this.showWeather = true
           this.temperature = ~~this.weather.main.temp
-          const currentHour = moment().format('k')
           switch (this.weather.weather[0].main) {
             case 'Thunderstorm':
             weatherIcon.icon = 'bolt'
