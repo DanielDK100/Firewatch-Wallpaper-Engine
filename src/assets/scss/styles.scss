@@ -38,9 +38,6 @@ body {
     height: 100vh;
     background: $background-color center/cover no-repeat fixed;
     transition: background 3s ease-in-out;
-    #preload-images {
-      display: none;
-    }
     .top {
       @include position($top: $position-absolute-unit);
       text-align: center;
