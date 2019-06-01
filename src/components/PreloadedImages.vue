@@ -16,7 +16,7 @@ export default {
     }
   },
   created() {
-    this.preloadImages(96, moment.duration(3, 'seconds').asMilliseconds())
+    this.preloadImages(96, moment.duration(4, 'seconds').asMilliseconds())
   },
   methods: {
     preloadImages: function(numberOfImages, duration) {

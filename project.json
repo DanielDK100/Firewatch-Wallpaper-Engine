@@ -28,20 +28,20 @@
 				"options":
 				[
 					{
-						"label": "Top right",
-						"value": "top-right"
+						"label": "Top right corner",
+						"value": "top right"
 					},
 					{
-						"label": "Top left",
-						"value": "top-left"
+						"label": "Top left corner",
+						"value": "top left"
 					},
 					{
-						"label": "Bottom right",
-						"value": "bottom-right"
+						"label": "Bottom right corner",
+						"value": "bottom right"
 					},
 					{
-						"label": "Bottom left",
-						"value": "bottom-left"
+						"label": "Bottom left corner",
+						"value": "bottom left"
 					}
 				]
 			},

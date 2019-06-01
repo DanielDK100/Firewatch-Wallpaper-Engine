@@ -1,6 +1,7 @@
 $background-color: #431951;
 $primary-text-color: #FCDEC9;
 $primary-font-family: 'Montserrat', sans-serif;
+$position-absolute-unit: 2vw;
 
 ::selection {
   background: $primary-text-color;
@@ -23,7 +24,7 @@ $primary-font-family: 'Montserrat', sans-serif;
   }
 }
 
-@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null) {
   position: $position;
   top: $top;
   right: $right;
@@ -40,20 +41,20 @@ body {
     #preload-images {
       display: none;
     }
-    .top-right {
-      @include position(absolute, $top: 2vw, $right: 2vw);
+    .top {
+      @include position($top: $position-absolute-unit);
+      text-align: center;
+    }
+    .bottom {
+      @include position($bottom: $position-absolute-unit);
+      text-align: center;
+    }
+    .right {
+      @include position($right: $position-absolute-unit);
       text-align: right;
     }
-    .top-left {
-      @include position(absolute, $top: 2vw, $left: 2vw);
-      text-align: left;
-    }
-    .bottom-right {
-      @include position(absolute, $bottom: 2vw, $right: 2vw);
-      text-align: right;
-    }
-    .bottom-left {
-      @include position(absolute, $bottom: 2vw, $left: 2vw);
+    .left {
+      @include position($left: $position-absolute-unit);
       text-align: left;
     }
     #container {

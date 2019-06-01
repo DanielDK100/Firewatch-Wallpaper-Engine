@@ -24,7 +24,7 @@ export default {
     return {
       background: '5_0',
       properties: Object,
-      clockWeatherPosition: 'top-right',
+      clockWeatherPosition: 'top right',
       showWidgets: false
     }
   },
