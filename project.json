@@ -23,7 +23,7 @@
 			{
 				"text": "<strong>Clock & weather position:</strong>",
 				"type": "combo",
-				"value": "top-right",
+				"value": "top right",
 				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
 				"options":
 				[
