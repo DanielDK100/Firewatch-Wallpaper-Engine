@@ -15,44 +15,66 @@
 		{
 			"schemecolor":
 			{
+				"order": 0,
 				"text": "<strong>System color:</strong>",
 				"type": "color",
 				"value": "#214660"
 			},
-			"clockWeatherPosition":
-			{
-				"text": "<strong>Clock & weather position:</strong>",
-				"type": "combo",
-				"value": "top right",
-				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
-				"options":
-				[
-					{
-						"label": "Top right corner",
-						"value": "top right"
-					},
-					{
-						"label": "Top left corner",
-						"value": "top left"
-					},
-					{
-						"label": "Bottom right corner",
-						"value": "bottom right"
-					},
-					{
-						"label": "Bottom left corner",
-						"value": "bottom left"
-					}
-				]
-			},
 			"isClockEnabled":
 			{
+				"order": 1,
 				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
+			"clockWeatherPositionX":
+			{
+				"order": 2,
+				"text": "<strong>Clock & weather position (X axis):</strong>",
+				"type": "slider",
+				"min": 0,
+				"max": 100,
+				"value": 2,
+				"editable": true,
+				"condition": "isClockEnabled.value == true"
+			},
+			"clockWeatherPositionY":
+			{
+				"order": 3,
+				"text": "<strong>Clock & weather position (Y axis):</strong>",
+				"type": "slider",
+				"min": 0,
+				"max": 100,
+				"value": 2,
+				"editable": true,
+				"condition": "isClockEnabled.value == true"
+			},
+			"clockWeatherTextAlignment":
+			{
+				"order": 4,
+				"text": "<strong>Clock & weather text alignment:</strong>",
+				"type": "combo",
+				"value": "right",
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"options":
+				[
+					{
+						"label": "Align right",
+						"value": "right"
+					},
+					{
+						"label": "Align left",
+						"value": "left"
+					},
+					{
+						"label": "Align center",
+						"value": "center"
+					}
+				]
+			},
 			"locale":
 			{
+				"order": 5,
 				"text": "<strong>Locale:</strong>",
 				"type": "combo",
 				"value": "en-gb",
@@ -575,6 +597,7 @@
 			},
 			"timeFormat":
 			{
+				"order": 6,
 				"text": "<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "lll",
@@ -605,12 +628,14 @@
 			},
 			"isWeatherEnabled":
 			{
+				"order": 7,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
 			"weatherUnit":
 			{
+				"order": 8,
 				"text": "<strong>Weather units:</strong>",
 				"type": "combo",
 				"value": "metric",
@@ -629,6 +654,7 @@
 			},
 			"weatherCity":
 			{
+				"order": 9,
 				"condition": "isWeatherEnabled.value == true",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",

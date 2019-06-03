@@ -3,7 +3,7 @@
     <preloaded-images></preloaded-images>
     <vue-particles color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse"></vue-particles>
     <transition name="bounce">
-      <div id="container" v-show="showWidgets" :class="clockWeatherPosition" v-tilt="{reverse: true}">
+      <div id="container" v-show="showWidgets" :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}" :class="clockWeatherTextAlignment" v-tilt="{reverse: true}">
         <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
         <weather :properties="properties" @properties="setProperties"></weather>
       </div>
@@ -22,10 +22,12 @@ export default {
   mixins: [mixins],
   data() {
     return {
+      showWidgets: false,
       background: '5_0',
       properties: Object,
-      clockWeatherPosition: 'top right',
-      showWidgets: false
+      clockWeatherPositionX: 2,
+      clockWeatherPositionY: 2,
+      clockWeatherTextAlignment: 'right'
     }
   },
   components: {
@@ -35,8 +37,14 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      if (newProperties.clockWeatherPosition) {
-        this.clockWeatherPosition = newProperties.clockWeatherPosition.value
+      if (newProperties.clockWeatherPositionX) {
+        this.clockWeatherPositionX = newProperties.clockWeatherPositionX.value
+      }
+      if (newProperties.clockWeatherPositionY) {
+        this.clockWeatherPositionY = newProperties.clockWeatherPositionY.value
+      }
+      if (newProperties.clockWeatherTextAlignment) {
+        this.clockWeatherTextAlignment = newProperties.clockWeatherTextAlignment.value
       }
     }
   },

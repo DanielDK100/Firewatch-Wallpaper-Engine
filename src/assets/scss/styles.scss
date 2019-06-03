@@ -24,35 +24,20 @@ $position-absolute-unit: 2vw;
   }
 }
 
-@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null) {
-  position: $position;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-}
-
 body {
   overflow: hidden;
   #app {
     height: 100vh;
     background: $background-color center/cover no-repeat fixed;
     transition: background 3s ease-in-out;
-    .top {
-      @include position($top: $position-absolute-unit);
-      text-align: center;
-    }
-    .bottom {
-      @include position($bottom: $position-absolute-unit);
-      text-align: center;
-    }
     .right {
-      @include position($right: $position-absolute-unit);
       text-align: right;
     }
     .left {
-      @include position($left: $position-absolute-unit);
       text-align: left;
+    }
+    .center {
+      text-align: center;
     }
     #container {
       font-family: $primary-font-family;
@@ -63,6 +48,7 @@ body {
       cursor: default;
       white-space: pre;
       font-size: 3.5vw;
+      position: absolute;
       #clock {
         margin-bottom: 1vw;
         letter-spacing: 0.3vw;
