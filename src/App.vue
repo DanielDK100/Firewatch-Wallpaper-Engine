@@ -67,7 +67,7 @@ export default {
       this.properties = properties
     },
     setBackground(background) {
-      this.background = '16_15'
+      this.background = background
     }
   }
 }
