@@ -655,7 +655,7 @@
 			"weatherFetchByType":
 			{
 				"order": 9,
-				"text": "<strong>Get weather by type:</strong>",
+				"text": "<strong>Get weather by location type:</strong>",
 				"type": "combo",
 				"value": "name",
 				"condition": "isWeatherEnabled.value == true",
