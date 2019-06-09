@@ -1,6 +1,7 @@
 $background-color: #431951;
 $primary-text-color: #FCDEC9;
 $primary-font-family: 'Montserrat', sans-serif;
+$margin-top-bottom: .7vw;
 
 ::selection {
   background: $primary-text-color;
@@ -44,19 +45,27 @@ body {
       font-style: normal;
       text-shadow: 3px 3px 1px #272727;
       color: $primary-text-color;
-      cursor: default;
       white-space: pre;
-      font-size: 3.5vw;
+      cursor: default;
       position: absolute;
       #clock {
-        margin-bottom: 1vw;
-        letter-spacing: 0.3vw;
+        font-size: 3vw;
+        margin-bottom: $margin-top-bottom;
+        letter-spacing: .2vw;
       }
       #weather-container {
-        margin-bottom: 1vw;
-        #weather {
+        margin-bottom: $margin-top-bottom;
+        #weather-icon {
+          font-size: 3vw;
+        }
+        #temperature {
+          font-size: 3vw;
           display: inline;
-          margin-left: 1vw;
+          margin-left: $margin-top-bottom;
+        }
+        #city-name {
+          margin-top: $margin-top-bottom;
+          font-size: 1.2vw;
         }
       }
     }

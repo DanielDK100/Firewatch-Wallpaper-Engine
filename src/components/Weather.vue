@@ -1,7 +1,8 @@
 <template>
   <div id="weather-container" v-show="showWeather">
     <font-awesome-icon id="weather-icon" :icon="fontAwesome.icon"></font-awesome-icon>
-    <div id="weather" v-text="temperature + ' °'"></div>
+    <div id="temperature" v-text="temperature + ' °'"></div>
+    <div id="city-name" v-text="cityName"></div>
   </div>
 </template>
 
@@ -16,12 +17,19 @@ export default {
   data() {
     return {
       showWeather: false,
-      temperature: 0,
       fontAwesome: {
         icon: 'exclamation-triangle'
       },
+      temperature: 0,
+      cityName: null,
       unit: 'metric',
-      city: 'London, UK'
+      cityObject: {
+        type: 'name',
+        name: 'London, UK',
+        latitude: 51.5073,
+        longitude: -0.1277,
+        id: 2643743
+      }
     }
   },
   computed: {
@@ -29,103 +37,133 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      if (newProperties.isWeatherEnabled) {
-        this.showWeather = newProperties.isWeatherEnabled.value
-      }
-      if (newProperties.weatherUnit) {
-        this.unit = newProperties.weatherUnit.value
-      }
-      if (newProperties.weatherCity) {
-        this.city = newProperties.weatherCity.value
-      }
-      this.fetchWeather(this.city, this.unit, newProperties)
+      newProperties.isWeatherEnabled ? (this.showWeather = newProperties.isWeatherEnabled.value) : null
+      newProperties.weatherUnit ? (this.unit = newProperties.weatherUnit.value) : null
+      newProperties.weatherFetchByType ? (this.cityObject.type = newProperties.weatherFetchByType.value) : null
+      newProperties.weatherName ? (this.cityObject.name = newProperties.weatherName.value) : null
+      newProperties.weatherLatitude ? (this.cityObject.latitude = newProperties.weatherLatitude.value) : null
+      newProperties.weatherLongitude ? (this.cityObject.longitude = newProperties.weatherLongitude.value) : null
+      newProperties.weatherId ? (this.cityObject.id = newProperties.weatherId.value) : null
+      this.fetchWeather(this.cityObject, this.unit, newProperties)
     }
   },
   created() {
-    this.startWeatherInterval(this.city, this.unit, moment.duration(3, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
+    this.startWeatherInterval(this.cityObject, this.unit, moment.duration(3, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
   },
   methods: {
-    fetchWeather: function(city, unit, newProperties = null) {
+    fetchWeather: function(cityObject, unit, newProperties = null) {
       if (this.showWeather) {
         if (newProperties) {
-          if (newProperties.weatherUnit) {
-            unit = newProperties.weatherUnit.value
-            this.unit = newProperties.weatherUnit.value
-          }
-          if (newProperties.weatherCity) {
-            city = newProperties.weatherCity.value
-            this.city = newProperties.weatherCity.value
-          }
+          newProperties.weatherUnit ? (unit, this.unit = newProperties.weatherUnit.value) : null
+          newProperties.weatherFetchByType ? (cityObject.type, this.cityObject.type = newProperties.weatherFetchByType.value) : null
+          newProperties.weatherName ? (cityObject.name, this.cityObject.name = newProperties.weatherName.value) : null
+          newProperties.weatherLatitude ? (cityObject.latitude, this.cityObject.latitude = newProperties.weatherLatitude.value) : null
+          newProperties.weatherLongitude ? (cityObject.longitude, this.cityObject.longitude = newProperties.weatherLongitude.value) : null
+          newProperties.weatherId ? (cityObject.id, this.cityObject.id = newProperties.weatherId.value) : null
         }
-        const weatherIcon = {icon: 'exclamation-triangle'}
-        const currentHour = moment().format('k')
-        this.$store.dispatch('fetchWeather', {city: this.city, unit: this.unit}).then(() => {
-          this.showWeather = true
-          this.temperature = ~~this.weather.main.temp
-          switch (this.weather.weather[0].main) {
-            case 'Thunderstorm':
-            weatherIcon.icon = 'bolt'
-            break
-            case 'Drizzle':
-            weatherIcon.icon = 'cloud-rain'
-            break
-            case 'Rain':
-            weatherIcon.icon = 'cloud-rain'
-            break
-            case 'Snow':
-            weatherIcon.icon = 'snowflake'
-            break
-            case 'Mist':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Smoke':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Haze':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Dust':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Fog':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Sand':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Ash':
-            weatherIcon.icon = 'smog'
-            break
-            case 'Squall':
-            weatherIcon.icon = 'wind'
-            break
-            case 'Tornado':
-            weatherIcon.icon = 'wind'
-            break
-            case 'Clear':
-            weatherIcon.icon = 'sun'
-            if (currentHour >= 21 || currentHour <= 5) {
-              weatherIcon.icon = 'moon'
-            }
-            break
-            case 'Clouds':
-            weatherIcon.icon = 'cloud'
-            break
-          }
-          this.fontAwesome = weatherIcon
-        })
-        .catch(error => {
-          this.fontAwesome = weatherIcon
-          this.temperature = 0
-          // eslint-disable-next-line
-          console.log(error)
-        })
+        switch (cityObject.type) {
+          case 'name':
+          this.$store.dispatch('fetchWeatherByName', {name: cityObject.name, unit: unit}).then(() => {
+            this.showWeather = true
+            this.temperature = ~~this.weather.main.temp
+            this.cityName = this.weather.name
+            this.setWeatherIcon(this.weather.weather[0].main)
+          })
+          .catch(error => {
+            this.temperature =  'N/A'
+            this.cityName = null
+            // eslint-disable-next-line
+            console.log(error)
+          })
+          break
+          case 'coordinates':
+          this.$store.dispatch('fetchWeatherByCoordinates', {latitude: cityObject.latitude, longitude: cityObject.longitude, unit: unit}).then(() => {
+            this.showWeather = true
+            this.temperature = ~~this.weather.main.temp
+            this.cityName = this.weather.name
+            this.setWeatherIcon(this.weather.weather[0].main)
+          })
+          .catch(error => {
+            this.temperature =  'N/A'
+            this.cityName = null
+            // eslint-disable-next-line
+            console.log(error)
+          })
+          break
+          case 'id':
+          this.$store.dispatch('fetchWeatherById', {id: cityObject.id, unit: unit}).then(() => {
+            this.showWeather = true
+            this.temperature = ~~this.weather.main.temp
+            this.cityName = this.weather.name
+            this.setWeatherIcon(this.weather.weather[0].main)
+          })
+          .catch(error => {
+            this.temperature =  'N/A'
+            this.cityName = null
+            // eslint-disable-next-line
+            console.log(error)
+          })
+          break
+        }
       }
     },
-    startWeatherInterval: function(city, unit, duration) {
-      this.fetchWeather(city, unit)
+    setWeatherIcon: function(icon) {
+      const currentHour = moment().format('k')
+      switch (icon) {
+        case 'Thunderstorm':
+        this.fontAwesome.icon = 'bolt'
+        break
+        case 'Drizzle':
+        this.fontAwesome.icon = 'cloud-rain'
+        break
+        case 'Rain':
+        this.fontAwesome.icon = 'cloud-rain'
+        break
+        case 'Snow':
+        this.fontAwesome.icon = 'snowflake'
+        break
+        case 'Mist':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Smoke':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Haze':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Dust':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Fog':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Sand':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Ash':
+        this.fontAwesome.icon = 'smog'
+        break
+        case 'Squall':
+        this.fontAwesome.icon = 'wind'
+        break
+        case 'Tornado':
+        this.fontAwesome.icon = 'wind'
+        break
+        case 'Clear':
+        this.fontAwesome.icon = 'sun'
+        if (currentHour >= 21 || currentHour <= 5) {
+          this.fontAwesome.icon = 'moon'
+        }
+        break
+        case 'Clouds':
+        this.fontAwesome.icon = 'cloud'
+        break
+      }
+    },
+    startWeatherInterval: function(cityObject, unit, duration) {
+      this.fetchWeather(cityObject, unit)
       setInterval(() => {
-        this.fetchWeather(city, unit)
+        this.fetchWeather(cityObject, unit)
       }, duration)
     }
   }

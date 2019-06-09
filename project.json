@@ -652,13 +652,60 @@
 					}
 				]
 			},
-			"weatherCity":
+			"weatherFetchByType":
 			{
 				"order": 9,
+				"text": "<strong>Get weather by type:</strong>",
+				"type": "combo",
+				"value": "name",
 				"condition": "isWeatherEnabled.value == true",
+				"options":
+				[
+					{
+						"label": "City name",
+						"value": "name"
+					},
+					{
+						"label": "Coordinates (latitude and longitude)",
+						"value": "coordinates"
+					},
+					{
+						"label": "City ID",
+						"value": "id"
+					}
+				]
+			},
+			"weatherName":
+			{
+				"order": 10,
+				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
 				"value": "London, UK"
+			},
+			"weatherLatitude":
+			{
+				"order": 11,
+				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
+				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
+				"type": "textinput",
+				"value": 51.5073
+			},
+			"weatherLongitude":
+			{
+				"order": 12,
+				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
+				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
+				"type": "textinput",
+				"value": -0.1277
+			},
+			"weatherId":
+			{
+				"order": 13,
+				"condition": "weatherFetchByType.value == 'id'",
+				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
+				"type": "textinput",
+				"value": 2643743
 			}
 		}
 	}
