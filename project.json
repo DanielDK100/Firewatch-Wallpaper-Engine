@@ -20,38 +20,31 @@
 				"type": "color",
 				"value": "#214660"
 			},
-			"isClockEnabled":
-			{
-				"order": 1,
-				"text": "<strong>Enable clock:</strong>",
-				"type": "bool",
-				"value": true
-			},
 			"clockWeatherPositionX":
 			{
-				"order": 2,
+				"order": 1,
 				"text": "<strong>Clock & weather position (X axis):</strong>",
 				"type": "slider",
 				"min": 0,
 				"max": 100,
 				"value": 2,
 				"editable": true,
-				"condition": "isClockEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
 			},
 			"clockWeatherPositionY":
 			{
-				"order": 3,
+				"order": 2,
 				"text": "<strong>Clock & weather position (Y axis):</strong>",
 				"type": "slider",
 				"min": 0,
 				"max": 100,
 				"value": 2,
 				"editable": true,
-				"condition": "isClockEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
 			},
 			"clockWeatherTextAlignment":
 			{
-				"order": 4,
+				"order": 3,
 				"text": "<strong>Clock & weather text alignment:</strong>",
 				"type": "combo",
 				"value": "right",
@@ -71,6 +64,13 @@
 						"value": "center"
 					}
 				]
+			},
+			"isClockEnabled":
+			{
+				"order": 4,
+				"text": "<strong>Enable clock:</strong>",
+				"type": "bool",
+				"value": true
 			},
 			"locale":
 			{

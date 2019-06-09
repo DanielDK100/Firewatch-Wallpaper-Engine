@@ -16,26 +16,14 @@ export default {
       clock: null,
       roundedTime: null,
       locale: 'en-gb',
-      timeFormat: 'lll',
-      newProperties: null
+      timeFormat: 'lll'
     }
   },
   watch: {
     properties: function(newProperties) {
-      if (newProperties.isClockEnabled) {
-        if (newProperties.isClockEnabled.value) {
-          this.showClock = true
-        }
-        else {
-          this.showClock = false
-        }
-      }
-      if (newProperties.locale) {
-        this.locale = newProperties.locale.value
-      }
-      if (newProperties.timeFormat) {
-        this.timeFormat = newProperties.timeFormat.value
-      }
+      newProperties.isClockEnabled ? this.showClock = newProperties.isClockEnabled.value : false
+      newProperties.locale ? this.locale = newProperties.locale.value : null
+      newProperties.timeFormat ? this.timeFormat = newProperties.timeFormat.value : null
     }
   },
   created() {
