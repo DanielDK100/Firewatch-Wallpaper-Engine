@@ -36,7 +36,7 @@ export default {
       this.setBackground(roundedTime)
       this.setClock(now)
       if (process.env.VUE_APP_TESTING == 'true') {
-        duration = 300
+        duration = moment.duration(0.1, 'seconds').asMilliseconds()
       }
       setInterval(() => {
         if (process.env.VUE_APP_TESTING == 'true') {
