@@ -56,11 +56,10 @@ export default {
   },
   methods: {
     initializeWallpaperPropertyListener() {
-      const self = this
       window.wallpaperPropertyListener = {
-        applyUserProperties: function(properties) {
-          self.properties = properties
-        }
+        applyUserProperties: ((properties) => {
+          this.properties = properties
+        })
       }
     },
     setProperties(properties) {
