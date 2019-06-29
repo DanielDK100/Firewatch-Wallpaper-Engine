@@ -3,7 +3,7 @@
     <preloaded-images></preloaded-images>
     <vue-particles color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse"></vue-particles>
     <transition name="bounce">
-      <div id="container" v-show="showWidgets" :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}" :class="clockWeatherTextAlignment" v-tilt="{reverse: true}">
+      <div id="container" ref="container" v-show="showWidgets" :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}" :class="clockWeatherTextAlignment" v-tilt="{reverse: true}">
         <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
         <weather :properties="properties" @properties="setProperties"></weather>
       </div>
@@ -37,7 +37,7 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      const tiltElement = document.querySelector('#container');
+      const tiltElement = this.$refs.container
       if (newProperties.isTiltEnabled) {
         newProperties.isTiltEnabled.value ? tiltElement.vanillaTilt.settings.max = 10 : tiltElement.vanillaTilt.settings.max = 0
       }
