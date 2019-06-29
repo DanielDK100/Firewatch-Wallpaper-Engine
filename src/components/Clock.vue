@@ -21,7 +21,7 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      newProperties.isClockEnabled ? this.showClock = newProperties.isClockEnabled.value : false
+      newProperties.isClockEnabled ? this.showClock = newProperties.isClockEnabled.value : null
       newProperties.locale ? this.locale = newProperties.locale.value : null
       newProperties.timeFormat ? this.timeFormat = newProperties.timeFormat.value : null
     }

@@ -37,15 +37,13 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      if (newProperties.clockWeatherPositionX) {
-        this.clockWeatherPositionX = newProperties.clockWeatherPositionX.value
+      const tiltElement = document.querySelector('#container');
+      if (newProperties.isTiltEnabled) {
+        newProperties.isTiltEnabled.value ? tiltElement.vanillaTilt.settings.max = 10 : tiltElement.vanillaTilt.settings.max = 0
       }
-      if (newProperties.clockWeatherPositionY) {
-        this.clockWeatherPositionY = newProperties.clockWeatherPositionY.value
-      }
-      if (newProperties.clockWeatherTextAlignment) {
-        this.clockWeatherTextAlignment = newProperties.clockWeatherTextAlignment.value
-      }
+      newProperties.clockWeatherPositionX ? this.clockWeatherPositionX = newProperties.clockWeatherPositionX.value : null
+      newProperties.clockWeatherPositionY ? this.clockWeatherPositionY = newProperties.clockWeatherPositionY.value : null
+      newProperties.clockWeatherTextAlignment ? this.clockWeatherTextAlignment = newProperties.clockWeatherTextAlignment.value : null
     }
   },
   created() {

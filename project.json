@@ -20,9 +20,16 @@
 				"type": "color",
 				"value": "#214660"
 			},
-			"clockWeatherPositionX":
+			"isTiltEnabled":
 			{
 				"order": 1,
+				"text": "<strong>Enable tilt hover effect:</strong>",
+				"type": "bool",
+				"value": true
+			},
+			"clockWeatherPositionX":
+			{
+				"order": 2,
 				"text": "<strong>Clock & weather position (X axis):</strong>",
 				"type": "slider",
 				"min": 0,
@@ -33,7 +40,7 @@
 			},
 			"clockWeatherPositionY":
 			{
-				"order": 2,
+				"order": 3,
 				"text": "<strong>Clock & weather position (Y axis):</strong>",
 				"type": "slider",
 				"min": 0,
@@ -44,7 +51,7 @@
 			},
 			"clockWeatherTextAlignment":
 			{
-				"order": 3,
+				"order": 4,
 				"text": "<strong>Clock & weather text alignment:</strong>",
 				"type": "combo",
 				"value": "right",
@@ -67,14 +74,14 @@
 			},
 			"isClockEnabled":
 			{
-				"order": 4,
+				"order": 5,
 				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"locale":
 			{
-				"order": 5,
+				"order": 6,
 				"text": "<strong>Locale:</strong>",
 				"type": "combo",
 				"value": "en-gb",
@@ -597,7 +604,7 @@
 			},
 			"timeFormat":
 			{
-				"order": 6,
+				"order": 7,
 				"text": "<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "lll",
@@ -628,14 +635,14 @@
 			},
 			"isWeatherEnabled":
 			{
-				"order": 7,
+				"order": 8,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
 			"weatherUnit":
 			{
-				"order": 8,
+				"order": 9,
 				"text": "<strong>Weather units:</strong>",
 				"type": "combo",
 				"value": "metric",
@@ -654,7 +661,7 @@
 			},
 			"weatherFetchByType":
 			{
-				"order": 9,
+				"order": 10,
 				"text": "<strong>Get weather by location type:</strong>",
 				"type": "combo",
 				"value": "name",
@@ -677,7 +684,7 @@
 			},
 			"weatherName":
 			{
-				"order": 10,
+				"order": 11,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
@@ -685,7 +692,7 @@
 			},
 			"weatherLatitude":
 			{
-				"order": 11,
+				"order": 12,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
 				"type": "textinput",
@@ -693,7 +700,7 @@
 			},
 			"weatherLongitude":
 			{
-				"order": 12,
+				"order": 13,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
 				"type": "textinput",
@@ -701,7 +708,7 @@
 			},
 			"weatherId":
 			{
-				"order": 13,
+				"order": 14,
 				"condition": "weatherFetchByType.value == 'id'",
 				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
 				"type": "textinput",
