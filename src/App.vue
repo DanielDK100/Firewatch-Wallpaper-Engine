@@ -37,8 +37,8 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      const tiltElement = this.$refs.container
       if (newProperties.isTiltEnabled) {
+        const tiltElement = this.$refs.container
         newProperties.isTiltEnabled.value ? tiltElement.vanillaTilt.settings.max = 10 : tiltElement.vanillaTilt.settings.max = 0
       }
       newProperties.clockWeatherPositionX ? this.clockWeatherPositionX = newProperties.clockWeatherPositionX.value : null
