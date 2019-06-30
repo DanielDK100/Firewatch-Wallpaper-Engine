@@ -37,13 +37,13 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      newProperties.isWeatherEnabled ? (this.showWeather = newProperties.isWeatherEnabled.value) : null
-      newProperties.weatherUnit ? (this.unit = newProperties.weatherUnit.value) : null
-      newProperties.weatherFetchByType ? (this.cityObject.type = newProperties.weatherFetchByType.value) : null
-      newProperties.weatherName ? (this.cityObject.name = newProperties.weatherName.value) : null
-      newProperties.weatherLatitude ? (this.cityObject.latitude = newProperties.weatherLatitude.value) : null
-      newProperties.weatherLongitude ? (this.cityObject.longitude = newProperties.weatherLongitude.value) : null
-      newProperties.weatherId ? (this.cityObject.id = newProperties.weatherId.value) : null
+      newProperties.isWeatherEnabled ? this.showWeather = newProperties.isWeatherEnabled.value : null
+      newProperties.weatherUnit ? this.unit = newProperties.weatherUnit.value : null
+      newProperties.weatherFetchByType ? this.cityObject.type = newProperties.weatherFetchByType.value : null
+      newProperties.weatherName ? this.cityObject.name = newProperties.weatherName.value : null
+      newProperties.weatherLatitude ? this.cityObject.latitude = newProperties.weatherLatitude.value : null
+      newProperties.weatherLongitude ? this.cityObject.longitude = newProperties.weatherLongitude.value : null
+      newProperties.weatherId ? this.cityObject.id = newProperties.weatherId.value : null
       this.fetchWeather(this.cityObject, this.unit, newProperties)
     }
   },
