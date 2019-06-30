@@ -39,11 +39,11 @@ export default {
     properties: function(newProperties) {
       if (newProperties.isTiltEnabled) {
         const tiltElement = this.$refs.container
-        newProperties.isTiltEnabled.value ? tiltElement.vanillaTilt.settings.max = 10 : tiltElement.vanillaTilt.settings.max = 0
+        newProperties.isTiltEnabled.value ? (tiltElement.vanillaTilt.settings.max = 10) : tiltElement.vanillaTilt.settings.max = 0
       }
-      newProperties.clockWeatherPositionX ? this.clockWeatherPositionX = newProperties.clockWeatherPositionX.value : null
-      newProperties.clockWeatherPositionY ? this.clockWeatherPositionY = newProperties.clockWeatherPositionY.value : null
-      newProperties.clockWeatherTextAlignment ? this.clockWeatherTextAlignment = newProperties.clockWeatherTextAlignment.value : null
+      newProperties.clockWeatherPositionX ? (this.clockWeatherPositionX = newProperties.clockWeatherPositionX.value) : null
+      newProperties.clockWeatherPositionY ? (this.clockWeatherPositionY = newProperties.clockWeatherPositionY.value) : null
+      newProperties.clockWeatherTextAlignment ? (this.clockWeatherTextAlignment = newProperties.clockWeatherTextAlignment.value) : null
     }
   },
   created() {
