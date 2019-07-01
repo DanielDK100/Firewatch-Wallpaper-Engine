@@ -44,26 +44,18 @@ export default {
       newProperties.weatherLatitude ? this.cityObject.latitude = newProperties.weatherLatitude.value : null
       newProperties.weatherLongitude ? this.cityObject.longitude = newProperties.weatherLongitude.value : null
       newProperties.weatherId ? this.cityObject.id = newProperties.weatherId.value : null
-      this.fetchWeather(this.cityObject, this.unit, newProperties)
+      this.fetchWeather()
     }
   },
   created() {
-    this.startWeatherInterval(this.cityObject, this.unit, moment.duration(3, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
+    this.startWeatherInterval(moment.duration(3, 'hours').asMilliseconds() + this.generateRandomNumber(-5, 11))
   },
   methods: {
-    fetchWeather: function(cityObject, unit, newProperties = null) {
+    fetchWeather: function() {
       if (this.showWeather) {
-        if (newProperties) {
-          newProperties.weatherUnit ? (unit, this.unit = newProperties.weatherUnit.value) : null
-          newProperties.weatherFetchByType ? (cityObject.type, this.cityObject.type = newProperties.weatherFetchByType.value) : null
-          newProperties.weatherName ? (cityObject.name, this.cityObject.name = newProperties.weatherName.value) : null
-          newProperties.weatherLatitude ? (cityObject.latitude, this.cityObject.latitude = newProperties.weatherLatitude.value) : null
-          newProperties.weatherLongitude ? (cityObject.longitude, this.cityObject.longitude = newProperties.weatherLongitude.value) : null
-          newProperties.weatherId ? (cityObject.id, this.cityObject.id = newProperties.weatherId.value) : null
-        }
-        switch (cityObject.type) {
+        switch (this.cityObject.type) {
           case 'name':
-          this.$store.dispatch('fetchWeatherByName', {name: cityObject.name, unit: unit}).then(() => {
+          this.$store.dispatch('fetchWeatherByName', {name: this.cityObject.name, unit: this.unit}).then(() => {
             this.showWeather = true
             this.temperature = ~~this.weather.main.temp
             this.cityName = this.weather.name
@@ -77,7 +69,7 @@ export default {
           })
           break
           case 'coordinates':
-          this.$store.dispatch('fetchWeatherByCoordinates', {latitude: cityObject.latitude, longitude: cityObject.longitude, unit: unit}).then(() => {
+          this.$store.dispatch('fetchWeatherByCoordinates', {latitude: this.cityObject.latitude, longitude: this.cityObject.longitude, unit: this.unit}).then(() => {
             this.showWeather = true
             this.temperature = ~~this.weather.main.temp
             this.cityName = this.weather.name
@@ -91,7 +83,7 @@ export default {
           })
           break
           case 'id':
-          this.$store.dispatch('fetchWeatherById', {id: cityObject.id, unit: unit}).then(() => {
+          this.$store.dispatch('fetchWeatherById', {id: this.cityObject.id, unit: this.unit}).then(() => {
             this.showWeather = true
             this.temperature = ~~this.weather.main.temp
             this.cityName = this.weather.name
@@ -160,10 +152,10 @@ export default {
         break
       }
     },
-    startWeatherInterval: function(cityObject, unit, duration) {
-      this.fetchWeather(cityObject, unit)
+    startWeatherInterval: function(duration) {
+      setTimeout(() => this.fetchWeather(), 1000);
       setInterval(() => {
-        this.fetchWeather(cityObject, unit)
+        this.fetchWeather()
       }, duration)
     }
   }
