@@ -12,9 +12,7 @@ export default {
   data() {
     return {
       showClock: true,
-      now: null,
       clock: null,
-      roundedTime: null,
       locale: 'en-gb',
       timeFormat: 'lll'
     }
@@ -27,9 +25,9 @@ export default {
     }
   },
   created() {
-    this.now = moment().locale(this.locale)
-    this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
-    this.startClockInterval(this.roundedTime, this.now, moment.duration(1, 'seconds').asMilliseconds())
+    const now = moment().locale(this.locale)
+    const roundedTime = this.round(now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
+    this.startClockInterval(roundedTime, now, moment.duration(1, 'seconds').asMilliseconds())
   },
   methods: {
     startClockInterval: function(roundedTime, now, duration) {
@@ -40,14 +38,14 @@ export default {
       }
       setInterval(() => {
         if (process.env.VUE_APP_TESTING == 'true') {
-          this.now = this.now.add(1, 'minutes')
+          now = this.now.add(1, 'minutes')
         }
         else {
-          this.now = moment().locale(this.locale)
+          now = moment().locale(this.locale)
         }
-        this.roundedTime = this.round(this.now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
-        this.setBackground(this.roundedTime)
-        this.setClock(this.now)
+        roundedTime = this.round(now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
+        this.setBackground(roundedTime)
+        this.setClock(now)
       }, duration)
     },
     setClock: function(now) {
