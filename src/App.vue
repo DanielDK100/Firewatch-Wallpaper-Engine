@@ -1,7 +1,7 @@
 <template>
   <div id="app" :style="{backgroundImage: 'url(' + loadImage(background + '.webp') + ')'}">
     <preloaded-images></preloaded-images>
-    <vue-particles color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse"></vue-particles>
+    <vue-particles v-show="showParticles" color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse"></vue-particles>
     <transition name="bounce">
       <div id="container" ref="container" v-show="showWidgets" :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}" :class="clockWeatherTextAlignment" v-tilt="{reverse: true}">
         <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
@@ -22,6 +22,7 @@ export default {
   mixins: [mixins],
   data() {
     return {
+      showParticles: true,
       showWidgets: false,
       background: '5_0',
       properties: Object,
@@ -37,6 +38,7 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
+      newProperties.isParticleEnabled ? this.showParticles = newProperties.isParticleEnabled.value : null
       if (newProperties.isTiltEnabled) {
         const tiltElement = this.$refs.container
         newProperties.isTiltEnabled.value ? tiltElement.vanillaTilt.settings.max = 10 : tiltElement.vanillaTilt.settings.max = 0
