@@ -18,10 +18,5 @@ export default {
         return Math.floor(Math.random() * (maxMinutesToMilliSeconds - minMinutesToMilliSeconds + 1) + minMinutesToMilliSeconds)
       }
     }
-  },
-  methods: {
-    loadImage(imageName) {
-      return require('../assets/images/' + imageName)
-    }
   }
 }

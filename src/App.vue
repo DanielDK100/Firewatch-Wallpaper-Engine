@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{backgroundImage: 'url(' + loadImage(background + '.webp') + ')'}">
+  <div id="app" :style="{backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')'}">
     <preloaded-images></preloaded-images>
     <vue-particles v-show="showParticles" color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse"></vue-particles>
     <transition name="bounce">
@@ -22,6 +22,7 @@ export default {
   mixins: [mixins],
   data() {
     return {
+      backgroundType: 'lake',
       showParticles: true,
       showWidgets: false,
       background: '5_0',
@@ -38,6 +39,7 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
+      newProperties.backgroundType ? this.backgroundType = newProperties.backgroundType.value : null
       newProperties.isParticleEnabled ? this.showParticles = newProperties.isParticleEnabled.value : null
       if (newProperties.isTiltEnabled) {
         const tiltElement = this.$refs.container

@@ -34,11 +34,11 @@ export default {
       this.setBackground(roundedTime)
       this.setClock(now)
       if (process.env.VUE_APP_TESTING == 'true') {
-        duration = moment.duration(0.1, 'seconds').asMilliseconds()
+        duration = moment.duration(0.500, 'seconds').asMilliseconds()
       }
       setInterval(() => {
         if (process.env.VUE_APP_TESTING == 'true') {
-          now = this.now.add(1, 'minutes')
+          now = now.add(1, 'minutes')
         }
         else {
           now = moment().locale(this.locale)
