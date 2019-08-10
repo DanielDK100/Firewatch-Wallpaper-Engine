@@ -23,10 +23,10 @@ export default {
   data() {
     return {
       backgroundType: 'lake',
-      showParticles: true,
-      showWidgets: false,
       background: '5_0',
       properties: Object,
+      showParticles: true,
+      showWidgets: false,
       clockWeatherPositionX: 2,
       clockWeatherPositionY: 2,
       clockWeatherTextAlignment: 'right'
