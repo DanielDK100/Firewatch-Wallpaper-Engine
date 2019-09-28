@@ -38,23 +38,41 @@
 					}
 				]
 			},
-			"isParticleEnabled":
+			"isAudioPlayerEnabled":
 			{
 				"order": 2,
+				"text": "<strong>Enable audio:</strong>",
+				"type": "bool",
+				"value": false
+			},
+			"audioVolume":
+			{
+				"order": 3,
+				"text": "<strong>Audio volume:</strong>",
+				"type": "slider",
+				"min": 1,
+				"max": 100,
+				"value": 50,
+				"editable": true,
+				"condition": "isAudioPlayerEnabled.value == true"
+			},
+			"isParticleEnabled":
+			{
+				"order": 4,
 				"text": "<strong>Enable particle effect:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"isTiltEnabled":
 			{
-				"order": 3,
+				"order": 5,
 				"text": "<strong>Enable tilt hover effect:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"clockWeatherPositionX":
 			{
-				"order": 4,
+				"order": 6,
 				"text": "<strong>Clock & weather position (X axis):</strong>",
 				"type": "slider",
 				"min": 0,
@@ -65,7 +83,7 @@
 			},
 			"clockWeatherPositionY":
 			{
-				"order": 5,
+				"order": 7,
 				"text": "<strong>Clock & weather position (Y axis):</strong>",
 				"type": "slider",
 				"min": 0,
@@ -76,7 +94,7 @@
 			},
 			"clockWeatherTextAlignment":
 			{
-				"order": 6,
+				"order": 8,
 				"text": "<strong>Clock & weather text alignment:</strong>",
 				"type": "combo",
 				"value": "right",
@@ -99,14 +117,14 @@
 			},
 			"isClockEnabled":
 			{
-				"order": 7,
+				"order": 9,
 				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"locale":
 			{
-				"order": 8,
+				"order": 10,
 				"text": "<strong>Locale:</strong>",
 				"type": "combo",
 				"value": "en-gb",
@@ -629,7 +647,7 @@
 			},
 			"timeFormat":
 			{
-				"order": 9,
+				"order": 11,
 				"text": "<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "lll",
@@ -660,14 +678,14 @@
 			},
 			"isWeatherEnabled":
 			{
-				"order": 10,
+				"order": 12,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
 			"weatherUnit":
 			{
-				"order": 11,
+				"order": 13,
 				"text": "<strong>Weather units:</strong>",
 				"type": "combo",
 				"value": "metric",
@@ -686,7 +704,7 @@
 			},
 			"weatherFetchByType":
 			{
-				"order": 12,
+				"order": 14,
 				"text": "<strong>Get weather by location type:</strong>",
 				"type": "combo",
 				"value": "name",
@@ -709,7 +727,7 @@
 			},
 			"weatherName":
 			{
-				"order": 13,
+				"order": 15,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
@@ -717,7 +735,7 @@
 			},
 			"weatherLatitude":
 			{
-				"order": 14,
+				"order": 16,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
 				"type": "textinput",
@@ -725,7 +743,7 @@
 			},
 			"weatherLongitude":
 			{
-				"order": 15,
+				"order": 17,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
 				"type": "textinput",
@@ -733,7 +751,7 @@
 			},
 			"weatherId":
 			{
-				"order": 16,
+				"order": 18,
 				"condition": "weatherFetchByType.value == 'id'",
 				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
 				"type": "textinput",

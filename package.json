@@ -8,15 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.21",
-    "@fortawesome/free-solid-svg-icons": "^5.10.1",
-    "@fortawesome/vue-fontawesome": "^0.1.6",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/vue-fontawesome": "^0.1.7",
     "axios": "^0.19.0",
     "copy-webpack-plugin": "^5.0.4",
-    "core-js": "^3.2.0",
+    "core-js": "^3.2.1",
     "node-sass": "^4.12.0",
     "reset-css": "^4.0.1",
-    "sass-loader": "^7.2.0",
+    "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-moment": "^4.0.0",
@@ -25,10 +25,10 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.10.0",
-    "@vue/cli-plugin-eslint": "^3.10.0",
-    "@vue/cli-service": "^3.10.0",
-    "babel-eslint": "^10.0.2",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "babel-eslint": "^10.0.3",
     "eslint-plugin-vue": "^5.2.3",
     "vue-template-compiler": "^2.5.21"
   },
