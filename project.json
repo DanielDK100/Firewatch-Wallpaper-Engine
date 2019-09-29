@@ -686,7 +686,7 @@
 			"weatherUnit":
 			{
 				"order": 13,
-				"text": "<strong>Weather units:</strong>",
+				"text": "<strong>Weather unit:</strong>",
 				"type": "combo",
 				"value": "metric",
 				"condition": "isWeatherEnabled.value == true",
