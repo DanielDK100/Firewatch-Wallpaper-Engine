@@ -1,15 +1,16 @@
 <template>
-  <div id="app" :style="{backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')'}">
-    <preloaded-images></preloaded-images>
-    <audio-player :properties="properties" @properties="setProperties"></audio-player>
-    <vue-particles v-show="showParticles" color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse"></vue-particles>
-    <transition name="bounce">
-      <div id="container" ref="container" v-show="showWidgets" :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}" :class="clockWeatherTextAlignment" v-tilt="{reverse: true}">
-        <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
-        <weather :properties="properties" @properties="setProperties"></weather>
-      </div>
-    </transition>
-  </div>
+<div id="app" :style="{backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')'}">
+  <preloaded-images></preloaded-images>
+  <audio-player :properties="properties" @properties="setProperties"></audio-player>
+  <vue-particles v-show="showParticles" color="#FCDEC9" :particleOpacity="0.2" :particlesNumber="40" shapeType="polygon" :particleSize="2" :lineLinked="false" :moveSpeed="1" :hoverEffect="false" :clickEffect="true" clickMode="repulse">
+  </vue-particles>
+  <transition name="bounce">
+    <div id="container" ref="container" v-show="showWidgets" :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}" :class="clockWeatherTextAlignment" v-tilt="{reverse: true}">
+      <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
+      <weather :properties="properties" @properties="setProperties"></weather>
+    </div>
+  </transition>
+</div>
 </template>
 
 <script>

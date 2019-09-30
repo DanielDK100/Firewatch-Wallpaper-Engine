@@ -1,5 +1,5 @@
 <template>
-  <div id="clock" v-show="showClock" v-text="clock"></div>
+<div id="clock" v-show="showClock" v-text="clock"></div>
 </template>
 
 <script>
@@ -39,8 +39,7 @@ export default {
       setInterval(() => {
         if (process.env.VUE_APP_TESTING == 'true') {
           now = now.add(1, 'minutes')
-        }
-        else {
+        } else {
           now = moment().locale(this.locale)
         }
         roundedTime = this.round(now, moment.duration(15, 'minutes'), 'ceil', 'en-gb')
