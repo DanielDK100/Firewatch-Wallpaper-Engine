@@ -5,9 +5,14 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: {
     plugins: [
-      new CopyWebpackPlugin([
-        { from: 'project.json', to: './' },
-        { from: 'preview.png', to: './' }
+      new CopyWebpackPlugin([{
+          from: 'project.json',
+          to: './'
+        },
+        {
+          from: 'preview.png',
+          to: './'
+        }
       ])
     ]
   }
