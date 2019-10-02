@@ -1,8 +1,8 @@
 <template>
-<audio v-show="showAudioPlayer" ref="audioPlayer" autoplay loop>
-  <source :src="require('../assets/audios/firewatch_prologue.mp3')" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <audio v-show="showAudioPlayer" ref="audioPlayer" autoplay loop>
+    <source :src="require('../assets/audios/firewatch_prologue.mp3')" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 </template>
 
 <script>

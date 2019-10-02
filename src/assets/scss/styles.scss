@@ -2,28 +2,24 @@ $background-color: #214660;
 $primary-text-color: #FCDEC9;
 $primary-font-family: 'Montserrat', sans-serif;
 $primary-font-size: 3vw;
-$primary-margin: 0.7vw;
+$primary-margin: .7vw;
 
 ::selection {
   background: $primary-text-color;
 }
-
 .bounce-enter-active {
-  animation: bounce-in 0.4s;
+  animation: bounce-in .4s;
 }
-
 .bounce-leave-active {
-  animation: bounce-in 0.4s reverse;
+  animation: bounce-in .4s reverse;
 }
 @keyframes bounce-in {
   0% {
     transform: scale(0);
   }
-
   50% {
     transform: scale(1.1);
   }
-
   100% {
     transform: scale(1);
   }
@@ -31,24 +27,19 @@ $primary-margin: 0.7vw;
 
 body {
   overflow: hidden;
-
   #app {
     height: 100vh;
     background: $background-color center/cover no-repeat fixed;
     transition: background 3s ease-in-out;
-
     .right {
       text-align: right;
     }
-
     .left {
       text-align: left;
     }
-
     .center {
       text-align: center;
     }
-
     #container {
       font-family: $primary-font-family;
       font-weight: 500;
@@ -58,25 +49,20 @@ body {
       white-space: pre;
       cursor: default;
       position: absolute;
-
       #clock {
         font-size: $primary-font-size;
         margin-bottom: $primary-margin;
       }
-
       #weather-container {
         margin-bottom: $primary-margin;
-
         #weather-icon {
           font-size: $primary-font-size;
         }
-
         #temperature {
           font-size: $primary-font-size;
           margin-left: $primary-margin;
           display: inline;
         }
-
         #city-name {
           font-size: $primary-font-size - 1.8;
           margin-top: $primary-margin;
