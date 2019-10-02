@@ -4,30 +4,27 @@
 	"title": "Firewatch real time day/night cycle",
 	"description": "Real time Firewatch wallpaper that changes the day/night cycle as the day progresses.",
 	"preview": "preview.png",
-	"tags": ["Landscape"],
+	"tags": [
+		"Landscape"
+	],
 	"contentrating": "Everyone",
 	"monetization": false,
 	"visibility": "public",
 	"workshopid": "1744170047",
-	"general":
-	{
-		"properties":
-		{
-			"schemecolor":
-			{
+	"general": {
+		"properties": {
+			"schemecolor": {
 				"order": 0,
 				"text": "<strong>System color:</strong>",
 				"type": "color",
 				"value": "#214660"
 			},
-			"backgroundType":
-			{
+			"backgroundType": {
 				"order": 1,
 				"text": "<strong>Background type:</strong>",
 				"type": "combo",
 				"value": "lake",
-				"options":
-				[
+				"options": [
 					{
 						"label": "Lake <img src='https://i.ibb.co/VWsMwcj/lake.png' height='30'>",
 						"value": "lake"
@@ -38,15 +35,13 @@
 					}
 				]
 			},
-			"isAudioPlayerEnabled":
-			{
+			"isAudioPlayerEnabled": {
 				"order": 2,
 				"text": "<strong>Enable audio:</strong>",
 				"type": "bool",
 				"value": false
 			},
-			"audioVolume":
-			{
+			"audioVolume": {
 				"order": 3,
 				"text": "<strong>Audio volume:</strong>",
 				"type": "slider",
@@ -56,22 +51,19 @@
 				"editable": true,
 				"condition": "isAudioPlayerEnabled.value == true"
 			},
-			"isParticleEnabled":
-			{
+			"isParticleEnabled": {
 				"order": 4,
 				"text": "<strong>Enable particle effect:</strong>",
 				"type": "bool",
 				"value": true
 			},
-			"isTiltEnabled":
-			{
+			"isTiltEnabled": {
 				"order": 5,
 				"text": "<strong>Enable tilt hover effect:</strong>",
 				"type": "bool",
 				"value": true
 			},
-			"clockWeatherPositionX":
-			{
+			"clockWeatherPositionX": {
 				"order": 6,
 				"text": "<strong>Clock & weather position (X axis):</strong>",
 				"type": "slider",
@@ -81,8 +73,7 @@
 				"editable": true,
 				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
 			},
-			"clockWeatherPositionY":
-			{
+			"clockWeatherPositionY": {
 				"order": 7,
 				"text": "<strong>Clock & weather position (Y axis):</strong>",
 				"type": "slider",
@@ -92,15 +83,13 @@
 				"editable": true,
 				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
 			},
-			"clockWeatherTextAlignment":
-			{
+			"clockWeatherTextAlignment": {
 				"order": 8,
 				"text": "<strong>Clock & weather text alignment:</strong>",
 				"type": "combo",
 				"value": "right",
 				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
-				"options":
-				[
+				"options": [
 					{
 						"label": "Align right",
 						"value": "right"
@@ -115,22 +104,19 @@
 					}
 				]
 			},
-			"isClockEnabled":
-			{
+			"isClockEnabled": {
 				"order": 9,
 				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
-			"locale":
-			{
+			"locale": {
 				"order": 10,
 				"text": "<strong>Locale:</strong>",
 				"type": "combo",
 				"value": "en-gb",
 				"condition": "isClockEnabled.value == true",
-				"options":
-				[
+				"options": [
 					{
 						"label": "Afrikaans",
 						"value": "af"
@@ -645,15 +631,13 @@
 					}
 				]
 			},
-			"timeFormat":
-			{
+			"timeFormat": {
 				"order": 11,
 				"text": "<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "lll",
 				"condition": "isClockEnabled.value == true",
-				"options":
-				[
+				"options": [
 					{
 						"label": "H:mm:ss",
 						"value": "LTS"
@@ -676,22 +660,19 @@
 					}
 				]
 			},
-			"isWeatherEnabled":
-			{
+			"isWeatherEnabled": {
 				"order": 12,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
-			"weatherUnit":
-			{
+			"weatherUnit": {
 				"order": 13,
 				"text": "<strong>Weather unit:</strong>",
 				"type": "combo",
 				"value": "metric",
 				"condition": "isWeatherEnabled.value == true",
-				"options":
-				[
+				"options": [
 					{
 						"label": "Celsius",
 						"value": "metric"
@@ -702,15 +683,13 @@
 					}
 				]
 			},
-			"weatherFetchByType":
-			{
+			"weatherFetchByType": {
 				"order": 14,
 				"text": "<strong>Get weather by location type:</strong>",
 				"type": "combo",
 				"value": "name",
 				"condition": "isWeatherEnabled.value == true",
-				"options":
-				[
+				"options": [
 					{
 						"label": "City name",
 						"value": "name"
@@ -725,32 +704,28 @@
 					}
 				]
 			},
-			"weatherName":
-			{
+			"weatherName": {
 				"order": 15,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
 				"value": "London, UK"
 			},
-			"weatherLatitude":
-			{
+			"weatherLatitude": {
 				"order": 16,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
 				"type": "textinput",
 				"value": 51.5073
 			},
-			"weatherLongitude":
-			{
+			"weatherLongitude": {
 				"order": 17,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
 				"type": "textinput",
 				"value": -0.1277
 			},
-			"weatherId":
-			{
+			"weatherId": {
 				"order": 18,
 				"condition": "weatherFetchByType.value == 'id'",
 				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",

@@ -1,17 +1,17 @@
 $background-color: #214660;
-$primary-text-color: #FCDEC9;
-$primary-font-family: 'Montserrat', sans-serif;
+$primary-text-color: #fcdec9;
+$primary-font-family: "Montserrat", sans-serif;
 $primary-font-size: 3vw;
-$primary-margin: .7vw;
+$primary-margin: 0.7vw;
 
 ::selection {
   background: $primary-text-color;
 }
 .bounce-enter-active {
-  animation: bounce-in .4s;
+  animation: bounce-in 0.4s;
 }
 .bounce-leave-active {
-  animation: bounce-in .4s reverse;
+  animation: bounce-in 0.4s reverse;
 }
 @keyframes bounce-in {
   0% {

@@ -6,12 +6,12 @@ export default {
     }
   },
   computed: {
-    round: function() {
+    round: function () {
       return function (date, duration, method, locale = this.locale) {
         return moment(Math[method]((+date) / (-duration)) * (-duration)).locale(locale)
       }
     },
-    generateRandomNumber: function() {
+    generateRandomNumber: function () {
       return function (minMinutes, maxMinutes) {
         const minMinutesToMilliSeconds = moment.duration(minMinutes, 'minutes').asMilliseconds()
         const maxMinutesToMilliSeconds = moment.duration(maxMinutes, 'minutes').asMilliseconds()
