@@ -22,16 +22,9 @@ export default {
     };
   },
   created() {
-    this.preloadImages(
-      96,
-      "lake",
-      moment.duration(4, "seconds").asMilliseconds()
-    );
-    this.preloadImages(
-      96,
-      "watchtower",
-      moment.duration(4, "seconds").asMilliseconds()
-    );
+    const fourSeconds = moment.duration(4, "seconds").asMilliseconds();
+    this.preloadImages(96, "lake", fourSeconds);
+    this.preloadImages(96, "watchtower", fourSeconds);
   },
   methods: {
     preloadImages: function(numberOfImages, backgroundType, duration) {
