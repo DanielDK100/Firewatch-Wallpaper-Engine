@@ -61,7 +61,8 @@
 				"order": 5,
 				"text": "<strong>Enable tilt hover effect:</strong>",
 				"type": "bool",
-				"value": true
+				"value": true,
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
 			},
 			"clockWeatherPositionX": {
 				"order": 6,
