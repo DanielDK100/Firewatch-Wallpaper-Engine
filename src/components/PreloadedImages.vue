@@ -10,11 +10,9 @@
 </template>
 
 <script>
-import mixin from "../mixins/mixins.js";
 import moment from "moment";
 
 export default {
-  mixins: [mixin],
   data() {
     return {
       showPreloadedImages: false,
