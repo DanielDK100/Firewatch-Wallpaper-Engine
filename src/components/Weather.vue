@@ -153,7 +153,7 @@ export default {
       }
     },
     startWeatherInterval: function(duration) {
-      setTimeout(() => this.fetchWeather(), moment.duration(1, 'seconds').asMilliseconds());
+      setTimeout(() => this.fetchWeather(), moment.duration(1, 'seconds').asMilliseconds())
       setInterval(() => {
         this.fetchWeather()
       }, duration)
