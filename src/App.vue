@@ -23,7 +23,7 @@
         id="container"
         ref="container"
         v-show="showWidgets"
-        :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw'}"
+        :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw', color: clockWeatherColor}"
         :class="clockWeatherTextAlignment"
         v-tilt="{reverse: true}"
       >
@@ -46,14 +46,16 @@ export default {
   mixins: [mixins],
   data() {
     return {
-      backgroundType: "lake",
+      backgroundType: "watchtower",
       background: "5_0",
       properties: Object,
       showParticles: true,
       showWidgets: false,
       clockWeatherPositionX: 2,
       clockWeatherPositionY: 2,
-      clockWeatherTextAlignment: "right"
+      clockWeatherTextAlignment: "right",
+      clockWeatherColor:
+        "0.9882352941176471 0.8705882352941177 0.788235294117647"
     };
   },
   components: {
@@ -88,6 +90,15 @@ export default {
         ? (this.clockWeatherTextAlignment =
             newProperties.clockWeatherTextAlignment.value)
         : null;
+      if (newProperties.clockWeatherColor) {
+        let clockWeatherColor = newProperties.clockWeatherColor.value.split(
+          " "
+        );
+        clockWeatherColor = clockWeatherColor.map(function(color) {
+          return Math.ceil(color * 255);
+        });
+        this.clockWeatherColor = "rgb(" + clockWeatherColor + ")";
+      }
     }
   },
   created() {

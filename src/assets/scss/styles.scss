@@ -1,12 +1,8 @@
 $background-color: #214660;
-$primary-text-color: #fcdec9;
 $primary-font-family: "Montserrat", sans-serif;
 $primary-font-size: 3vw;
 $primary-margin: 0.7vw;
 
-::selection {
-  background: $primary-text-color;
-}
 .bounce-enter-active {
   animation: bounce-in 0.4s;
 }
@@ -45,7 +41,6 @@ body {
       font-weight: 500;
       font-style: normal;
       text-shadow: 2px 2px 1px #272727;
-      color: $primary-text-color;
       white-space: pre;
       cursor: default;
       position: absolute;

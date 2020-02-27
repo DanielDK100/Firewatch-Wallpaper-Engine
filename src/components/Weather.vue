@@ -2,7 +2,7 @@
   <div id="weather-container" v-show="showWeather">
     <font-awesome-icon id="weather-icon" :icon="fontAwesome.icon"></font-awesome-icon>
     <div id="temperature" v-text="temperature + ' °'"></div>
-    <div id="city-name" v-text="cityName"></div>
+    <div id="city-name" v-show="showCityName" v-text="cityName"></div>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
         icon: "exclamation-triangle"
       },
       temperature: 0,
+      showCityName: true,
       cityName: null,
       unit: "metric",
       cityObject: {
@@ -57,6 +58,9 @@ export default {
         : null;
       newProperties.weatherId
         ? (this.cityObject.id = newProperties.weatherId.value)
+        : null;
+      newProperties.isCityNameShown
+        ? (this.showCityName = newProperties.isCityNameShown.value)
         : null;
       this.fetchWeather();
     }
