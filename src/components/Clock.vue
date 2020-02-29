@@ -46,11 +46,11 @@ export default {
     startClockInterval: function(roundedTime, now, duration) {
       this.setBackground(roundedTime);
       this.setClock(now);
-      if (process.env.VUE_APP_TESTING == "true") {
+      if (process.env.VUE_APP_TESTING === "true") {
         duration = moment.duration(0.5, "seconds").asMilliseconds();
       }
       setInterval(() => {
-        if (process.env.VUE_APP_TESTING == "true") {
+        if (process.env.VUE_APP_TESTING === "true") {
           now = now.add(1, "minutes");
         } else {
           now = moment().locale(this.locale);
