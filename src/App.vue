@@ -46,7 +46,7 @@ export default {
   mixins: [mixins],
   data() {
     return {
-      backgroundType: "watchtower",
+      backgroundType: "lake",
       background: "5_0",
       properties: Object,
       showParticles: true,
@@ -54,8 +54,7 @@ export default {
       clockWeatherPositionX: 2,
       clockWeatherPositionY: 2,
       clockWeatherTextAlignment: "right",
-      clockWeatherColor:
-        "0.9882352941176471 0.8705882352941177 0.788235294117647"
+      clockWeatherColor: "rgb(252, 222, 201)"
     };
   },
   components: {

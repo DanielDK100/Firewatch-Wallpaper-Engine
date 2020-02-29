@@ -746,6 +746,13 @@
 				"type": "bool",
 				"value": true,
 				"condition": "isWeatherEnabled.value == true"
+			},
+			"weatherApiKey": {
+				"order": 21,
+				"condition": "isWeatherEnabled.value == true",
+				"text": "<strong>API key:</strong><em><br>Get your own API key: <a href='https://home.openweathermap.org/api_keys' target='_blank'>OpenWeatherMap API key</a> and paste it here</em>",
+				"type": "textinput",
+				"value": null
 			}
 		}
 	}

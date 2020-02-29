@@ -13,7 +13,7 @@ export default new Vuex.Store({
   actions: {
     fetchWeatherByName({ commit }, data) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?q=' + data.name + '&units=' + data.unit + '&appid=' + process.env.VUE_APP_WEATHER_API_KEY)
+        axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?q=' + data.name + '&units=' + data.unit + '&appid=' + data.apiKey)
           .then(r => r.data)
           .then(weather => {
             commit('SET_WEATHER', weather)
@@ -26,7 +26,7 @@ export default new Vuex.Store({
     },
     fetchWeatherByCoordinates({ commit }, data) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?lat=' + data.latitude + '&lon=' + data.longitude + '&units=' + data.unit + '&appid=' + process.env.VUE_APP_WEATHER_API_KEY)
+        axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?lat=' + data.latitude + '&lon=' + data.longitude + '&units=' + data.unit + '&appid=' + data.apiKey)
           .then(r => r.data)
           .then(weather => {
             commit('SET_WEATHER', weather)
@@ -39,7 +39,7 @@ export default new Vuex.Store({
     },
     fetchWeatherById({ commit }, data) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?id=' + data.id + '&units=' + data.unit + '&appid=' + process.env.VUE_APP_WEATHER_API_KEY)
+        axios.get(process.env.VUE_APP_WEATHER_BASE_URL + '?id=' + data.id + '&units=' + data.unit + '&appid=' + data.apiKey)
           .then(r => r.data)
           .then(weather => {
             commit('SET_WEATHER', weather)

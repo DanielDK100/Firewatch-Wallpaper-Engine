@@ -21,9 +21,10 @@ export default {
         icon: "exclamation-triangle"
       },
       temperature: 0,
-      showCityName: true,
-      cityName: null,
       unit: "metric",
+      cityName: null,
+      showCityName: true,
+      weatherApiKey: null,
       cityObject: {
         type: "name",
         name: "London, UK",
@@ -62,13 +63,18 @@ export default {
       newProperties.isCityNameShown
         ? (this.showCityName = newProperties.isCityNameShown.value)
         : null;
+      newProperties.weatherApiKey
+        ? (this.weatherApiKey = newProperties.weatherApiKey.value)
+        : null;
       this.fetchWeather();
     }
   },
   created() {
     this.startWeatherInterval(
-      moment.duration(3, "hours").asMilliseconds() +
-        this.generateRandomNumber(-5, 11)
+      this.weatherApiKey
+        ? moment.duration(1, "minutes").asMilliseconds()
+        : moment.duration(3, "hours").asMilliseconds() +
+            this.generateRandomNumber(-5, 11)
     );
   },
   methods: {
@@ -79,7 +85,10 @@ export default {
             this.$store
               .dispatch("fetchWeatherByName", {
                 name: this.cityObject.name,
-                unit: this.unit
+                unit: this.unit,
+                apiKey: this.weatherApiKey
+                  ? this.weatherApiKey
+                  : process.env.VUE_APP_WEATHER_API_KEY
               })
               .then(() => {
                 this.showWeather = true;
@@ -99,7 +108,10 @@ export default {
               .dispatch("fetchWeatherByCoordinates", {
                 latitude: this.cityObject.latitude,
                 longitude: this.cityObject.longitude,
-                unit: this.unit
+                unit: this.unit,
+                apiKey: this.weatherApiKey
+                  ? this.weatherApiKey
+                  : process.env.VUE_APP_WEATHER_API_KEY
               })
               .then(() => {
                 this.showWeather = true;
@@ -118,7 +130,10 @@ export default {
             this.$store
               .dispatch("fetchWeatherById", {
                 id: this.cityObject.id,
-                unit: this.unit
+                unit: this.unit,
+                apiKey: this.weatherApiKey
+                  ? this.weatherApiKey
+                  : process.env.VUE_APP_WEATHER_API_KEY
               })
               .then(() => {
                 this.showWeather = true;
