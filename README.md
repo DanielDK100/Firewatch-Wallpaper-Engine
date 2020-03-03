@@ -1,4 +1,4 @@
-# Firewatch real time day/night cycle
+# Firewatch real time day/night cycle1
 ## Installation
 [Firewatch real time day/night cycle](https://steamcommunity.com/sharedfiles/filedetails/?id=1744170047)
 
