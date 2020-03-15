@@ -112,14 +112,24 @@
 				"value": "0.9882352941176471 0.8705882352941177 0.788235294117647",
 				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
 			},
-			"isClockEnabled": {
+			"clockWeatherFontSize": {
 				"order": 10,
+				"text": "<strong>Clock & weather font size:</strong>",
+				"type": "slider",
+				"min": 0.1,
+				"max": 10,
+				"value": 3,
+				"editable": true,
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
+			},
+			"isClockEnabled": {
+				"order": 11,
 				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
 			"locale": {
-				"order": 11,
+				"order": 12,
 				"text": "<strong>Locale:</strong>",
 				"type": "combo",
 				"value": "en-gb",
@@ -640,7 +650,7 @@
 				]
 			},
 			"timeFormat": {
-				"order": 12,
+				"order": 13,
 				"text": "<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "lll",
@@ -669,13 +679,13 @@
 				]
 			},
 			"isWeatherEnabled": {
-				"order": 13,
+				"order": 14,
 				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
 			"weatherUnit": {
-				"order": 14,
+				"order": 15,
 				"text": "<strong>Weather unit:</strong>",
 				"type": "combo",
 				"value": "metric",
@@ -692,7 +702,7 @@
 				]
 			},
 			"weatherFetchByType": {
-				"order": 15,
+				"order": 16,
 				"text": "<strong>Get weather by location type:</strong>",
 				"type": "combo",
 				"value": "name",
@@ -713,42 +723,42 @@
 				]
 			},
 			"weatherName": {
-				"order": 16,
+				"order": 17,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
 				"value": "London, UK"
 			},
 			"weatherLatitude": {
-				"order": 17,
+				"order": 18,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
 				"type": "textinput",
 				"value": 51.5073
 			},
 			"weatherLongitude": {
-				"order": 18,
+				"order": 19,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
 				"type": "textinput",
 				"value": -0.1277
 			},
 			"weatherId": {
-				"order": 19,
+				"order": 20,
 				"condition": "weatherFetchByType.value == 'id'",
 				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
 				"type": "textinput",
 				"value": 2643743
 			},
 			"isCityNameShown": {
-				"order": 20,
+				"order": 21,
 				"text": "<strong>Show city name:</strong>",
 				"type": "bool",
 				"value": true,
 				"condition": "isWeatherEnabled.value == true"
 			},
 			"weatherApiKey": {
-				"order": 21,
+				"order": 22,
 				"condition": "isWeatherEnabled.value == true",
 				"text": "<strong>API key:</strong><em><br>Get your own API key: <a href='https://home.openweathermap.org/api_keys' target='_blank'>OpenWeatherMap API key</a> and paste it here</em>",
 				"type": "textinput",

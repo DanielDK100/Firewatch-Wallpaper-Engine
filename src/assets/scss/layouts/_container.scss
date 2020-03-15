@@ -1,0 +1,15 @@
+body {
+  overflow: hidden;
+  #app {
+    height: 100vh;
+    background: $background-color center/cover no-repeat fixed;
+    transition: background 3s ease-in-out;
+    #container {
+      font-family: $primary-font-family;
+      text-shadow: 2px 2px 1px #272727;
+      white-space: pre;
+      cursor: default;
+      position: absolute;
+    }
+  }
+}

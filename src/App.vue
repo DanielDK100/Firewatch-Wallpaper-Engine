@@ -18,12 +18,12 @@
       :clickEffect="true"
       clickMode="repulse"
     ></vue-particles>
-    <transition name="bounce">
+    <transition name="slide">
       <div
         id="container"
         ref="container"
         v-show="showWidgets"
-        :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw', color: clockWeatherColor}"
+        :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw', color: clockWeatherColor, fontSize: clockWeatherFontSize + 'vw'}"
         :class="clockWeatherTextAlignment"
         v-tilt="{reverse: true}"
       >
@@ -54,7 +54,8 @@ export default {
       clockWeatherPositionX: 2,
       clockWeatherPositionY: 2,
       clockWeatherTextAlignment: "right",
-      clockWeatherColor: "rgb(252, 222, 201)"
+      clockWeatherColor: "rgb(252, 222, 201)",
+      clockWeatherFontSize: "3"
     };
   },
   components: {
@@ -98,6 +99,9 @@ export default {
         });
         this.clockWeatherColor = "rgb(" + clockWeatherColor + ")";
       }
+      newProperties.clockWeatherFontSize
+        ? (this.clockWeatherFontSize = newProperties.clockWeatherFontSize.value)
+        : null;
     }
   },
   created() {

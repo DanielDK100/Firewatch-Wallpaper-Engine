@@ -1,0 +1,14 @@
+#clock {
+  margin-bottom: $primary-margin;
+}
+#weather-container {
+  margin-bottom: $primary-margin;
+  #temperature {
+    margin-left: $primary-margin;
+    display: inline;
+  }
+  #city-name {
+    margin-top: $primary-margin;
+    font-size: 40%;
+  }
+}
