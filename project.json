@@ -124,7 +124,7 @@
 			},
 			"isClockEnabled": {
 				"order": 11,
-				"text": "<strong>Enable clock:</strong>",
+				"text": "<hr><strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true
 			},
@@ -680,7 +680,7 @@
 			},
 			"isWeatherEnabled": {
 				"order": 14,
-				"text": "<strong>Enable weather:</strong>",
+				"text": "<hr><strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false
 			},
