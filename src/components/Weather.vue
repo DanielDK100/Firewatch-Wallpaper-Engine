@@ -1,7 +1,7 @@
 <template>
   <div id="weather-container" v-show="showWeather">
-    <font-awesome-icon id="weather-icon" :icon="fontAwesome.icon"></font-awesome-icon>
-    <div id="temperature" v-text="temperature + ' °'"></div>
+    <font-awesome-icon :icon="fontAwesome.icon" transform="shrink-2"></font-awesome-icon>
+    <div id="temperature" v-text="temperature + '°'"></div>
     <div id="city-name" v-show="showCityName" v-text="cityName"></div>
   </div>
 </template>
