@@ -25,6 +25,7 @@ export default {
       cityName: null,
       showCityName: true,
       weatherApiKey: null,
+      refreshId: null,
       cityObject: {
         type: "name",
         name: "London, UK",
@@ -67,18 +68,20 @@ export default {
         ? (this.weatherApiKey = newProperties.weatherApiKey.value)
         : null;
       this.fetchWeather();
+    },
+    weatherApiKey: function() {
+      clearInterval(this.refreshId);
+      this.startWeatherInterval(
+        this.weatherApiKey
+          ? moment.duration(1, "minutes").asMilliseconds()
+          : moment.duration(3, "hours").asMilliseconds() +
+              this.generateRandomNumber(-5, 11)
+      );
     }
-  },
-  created() {
-    this.startWeatherInterval(
-      this.weatherApiKey
-        ? moment.duration(1, "minutes").asMilliseconds()
-        : moment.duration(3, "hours").asMilliseconds() +
-            this.generateRandomNumber(-5, 11)
-    );
   },
   methods: {
     fetchWeather: function() {
+      this.i++;
       if (this.showWeather) {
         switch (this.cityObject.type) {
           case "name":
@@ -209,7 +212,7 @@ export default {
         () => this.fetchWeather(),
         moment.duration(1, "seconds").asMilliseconds()
       );
-      setInterval(() => {
+      this.refreshId = setInterval(() => {
         this.fetchWeather();
       }, duration);
     }
