@@ -1,6 +1,6 @@
 <template>
   <div id="weather-container" v-show="showWeather">
-    <font-awesome-icon :icon="fontAwesome.icon" transform="shrink-2"></font-awesome-icon>
+    <font-awesome-icon :icon="weatherIcon" transform="shrink-2"></font-awesome-icon>
     <div id="temperature" v-text="temperature + '°'"></div>
     <div id="city-name" v-show="showCityName" v-text="cityName"></div>
   </div>
@@ -17,9 +17,7 @@ export default {
   data() {
     return {
       showWeather: false,
-      fontAwesome: {
-        icon: "exclamation-triangle"
-      },
+      weatherIcon: "exclamation-triangle",
       temperature: 0,
       unit: "metric",
       cityName: null,
@@ -81,7 +79,6 @@ export default {
   },
   methods: {
     fetchWeather: function() {
-      this.i++;
       if (this.showWeather) {
         switch (this.cityObject.type) {
           case "name":
@@ -97,7 +94,9 @@ export default {
                 this.showWeather = true;
                 this.temperature = ~~this.weather.main.temp;
                 this.cityName = this.weather.name;
-                this.setWeatherIcon(this.weather.weather[0].main);
+                this.weatherIcon = this.setWeatherIcon(
+                  this.weather.weather[0].main
+                );
               })
               .catch(error => {
                 this.temperature = "N/A";
@@ -120,7 +119,9 @@ export default {
                 this.showWeather = true;
                 this.temperature = ~~this.weather.main.temp;
                 this.cityName = this.weather.name;
-                this.setWeatherIcon(this.weather.weather[0].main);
+                this.weatherIcon = this.setWeatherIcon(
+                  this.weather.weather[0].main
+                );
               })
               .catch(error => {
                 this.temperature = "N/A";
@@ -142,7 +143,9 @@ export default {
                 this.showWeather = true;
                 this.temperature = ~~this.weather.main.temp;
                 this.cityName = this.weather.name;
-                this.setWeatherIcon(this.weather.weather[0].main);
+                this.weatherIcon = this.setWeatherIcon(
+                  this.weather.weather[0].main
+                );
               })
               .catch(error => {
                 this.temperature = "N/A";
@@ -156,56 +159,30 @@ export default {
     },
     setWeatherIcon: function(icon) {
       const currentHour = moment().format("k");
-      switch (icon) {
-        case "Thunderstorm":
-          this.fontAwesome.icon = "bolt";
-          break;
-        case "Drizzle":
-          this.fontAwesome.icon = "cloud-rain";
-          break;
-        case "Rain":
-          this.fontAwesome.icon = "cloud-rain";
-          break;
-        case "Snow":
-          this.fontAwesome.icon = "snowflake";
-          break;
-        case "Mist":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Smoke":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Haze":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Dust":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Fog":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Sand":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Ash":
-          this.fontAwesome.icon = "smog";
-          break;
-        case "Squall":
-          this.fontAwesome.icon = "wind";
-          break;
-        case "Tornado":
-          this.fontAwesome.icon = "wind";
-          break;
-        case "Clear":
-          this.fontAwesome.icon = "sun";
-          if (currentHour >= 21 || currentHour <= 5) {
-            this.fontAwesome.icon = "moon";
-          }
-          break;
-        case "Clouds":
-          this.fontAwesome.icon = "cloud";
-          break;
+      const cloudRain = "cloud-rain";
+      const smog = "smog";
+      const wind = "wind";
+      if (currentHour >= 21 || currentHour <= 5) {
+        icon = "Moon";
       }
+      return {
+        Thunderstorm: "bolt",
+        Drizzle: cloudRain,
+        Rain: cloudRain,
+        Snow: "snowflake",
+        Mist: smog,
+        Smoke: smog,
+        Haze: smog,
+        Dust: smog,
+        Fog: smog,
+        Sand: smog,
+        Ash: smog,
+        Squall: wind,
+        Tornado: wind,
+        Clear: "sun",
+        Clouds: "cloud",
+        Moon: "moon"
+      }[icon];
     },
     startWeatherInterval: function(duration) {
       setTimeout(
