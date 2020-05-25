@@ -15,9 +15,9 @@
 		"properties": {
 			"schemecolor": {
 				"order": 0,
-				"text": "<strong>System color:</strong>",
+				"text": "<strong>Scheme color:</strong>",
 				"type": "color",
-				"value": "#214660"
+				"value": "0.12941176470588237 0.27450980392156865. 0.3764705882352941"
 			},
 			"backgroundType": {
 				"order": 1,

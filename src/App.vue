@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    :style="{backgroundColor: systemColor, backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')', backgroundSize: backgroundAlignment}"
+    :style="{backgroundColor: schemeColor, backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')', backgroundSize: backgroundAlignment}"
   >
     <preloaded-images></preloaded-images>
     <audio-player :properties="properties" @properties="setProperties"></audio-player>
@@ -46,7 +46,7 @@ export default {
   mixins: [mixins],
   data() {
     return {
-      systemColor: "rgb(33, 70, 96)",
+      schemeColor: "rgb(33, 70, 96)",
       backgroundType: "lake",
       backgroundAlignment: "cover",
       background: "5_0",
@@ -68,8 +68,8 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      newProperties.systemcolor
-        ? (this.systemColor = newProperties.systemcolor.value)
+      newProperties.schemecolor
+        ? (this.schemeColor = newProperties.schemecolor.value)
         : null;
       newProperties.backgroundAlignment
         ? (this.backgroundAlignment = newProperties.backgroundAlignment.value)

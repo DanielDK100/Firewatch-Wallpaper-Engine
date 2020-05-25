@@ -8,7 +8,7 @@ module.exports = {
       new CopyWebpackPlugin({
         patterns: [
           { from: 'project.json', to: './' },
-          { from: 'preview.png', to: './' }
+          { from: 'preview.jpg', to: './' }
         ]
       })
     ]
