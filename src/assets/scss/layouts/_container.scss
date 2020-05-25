@@ -2,7 +2,7 @@ body {
   overflow: hidden;
   #app {
     height: 100vh;
-    background: $background-color center/cover no-repeat fixed;
+    background: center no-repeat fixed;
     transition: background 3s ease-in-out;
     #container {
       font-family: $primary-font-family;
