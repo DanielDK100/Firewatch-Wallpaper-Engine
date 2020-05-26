@@ -3,7 +3,7 @@
     id="app"
     :style="{backgroundColor: schemeColor, backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')', backgroundSize: backgroundAlignment}"
   >
-    <preloaded-images></preloaded-images>
+    <preloaded-images :backgroundType="backgroundType"></preloaded-images>
     <audio-player :properties="properties" @properties="setProperties"></audio-player>
     <vue-particles
       v-show="showParticles"

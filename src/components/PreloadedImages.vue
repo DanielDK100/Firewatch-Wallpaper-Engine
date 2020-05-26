@@ -13,29 +13,38 @@
 import moment from "moment";
 
 export default {
+  props: ["backgroundType"],
   data() {
     return {
       showPreloadedImages: false,
       preloadedImages: []
     };
   },
+  watch: {
+    backgroundType: function(newBackgroundType) {
+      const fourSeconds = moment.duration(4, "seconds").asMilliseconds();
+      this.preloadImages(96, newBackgroundType, fourSeconds);
+    }
+  },
   created() {
     const fourSeconds = moment.duration(4, "seconds").asMilliseconds();
-    this.preloadImages(96, "lake", fourSeconds);
-    this.preloadImages(96, "watchtower", fourSeconds);
+    this.preloadImages(96, this.backgroundType, fourSeconds);
   },
   methods: {
     preloadImages: function(numberOfImages, backgroundType, duration) {
       const fromNight = moment("1_0", "k_m").locale("en-gb");
+      const numberArray = Array(numberOfImages)
+        .fill()
+        .map((_, i) => 1 + i);
       setTimeout(() => {
-        for (let i = 1; i <= numberOfImages; i++) {
+        numberArray.forEach(function() {
           this.preloadedImages.push({
             src: fromNight.format("k_m"),
             backgroundType: backgroundType,
             alt: fromNight.format("k:m")
           });
           fromNight.add(15, "minutes");
-        }
+        }, this);
       }, duration);
     }
   }
