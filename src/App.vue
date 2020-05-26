@@ -18,7 +18,7 @@
       :clickEffect="true"
       clickMode="repulse"
     ></vue-particles>
-    <transition name="slide">
+    <transition :style="{backgroundColor: schemeColor}" name="slide">
       <div
         id="container"
         ref="container"
@@ -68,9 +68,13 @@ export default {
   },
   watch: {
     properties: function(newProperties) {
-      newProperties.schemecolor
-        ? (this.schemeColor = newProperties.schemecolor.value)
-        : null;
+      if (newProperties.schemecolor) {
+        let schemeColor = newProperties.schemecolor.value.split(" ");
+        schemeColor = schemeColor.map(function(color) {
+          return Math.ceil(color * 255);
+        });
+        this.schemeColor = "rgb(" + schemeColor + ")";
+      }
       newProperties.backgroundAlignment
         ? (this.backgroundAlignment = newProperties.backgroundAlignment.value)
         : null;
