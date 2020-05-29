@@ -78,6 +78,18 @@ export default {
     }
   },
   methods: {
+    saveWeatherData(showWeather, temperature, cityName, weatherIcon) {
+      this.showWeather = showWeather;
+      this.temperature = temperature;
+      this.cityName = cityName;
+      this.weatherIcon = weatherIcon;
+    },
+    catchWeatherException(temperature, cityName, error) {
+      this.temperature = temperature;
+      this.cityName = cityName;
+      // eslint-disable-next-line
+      console.log(error);
+    },
     fetchWeather: function() {
       if (this.showWeather) {
         switch (this.cityObject.type) {
@@ -91,18 +103,15 @@ export default {
                   : process.env.VUE_APP_WEATHER_API_KEY
               })
               .then(() => {
-                this.showWeather = true;
-                this.temperature = ~~this.weather.main.temp;
-                this.cityName = this.weather.name;
-                this.weatherIcon = this.setWeatherIcon(
-                  this.weather.weather[0].main
+                this.saveWeatherData(
+                  true,
+                  ~~this.weather.main.temp,
+                  this.weather.name,
+                  this.setWeatherIcon(this.weather.weather[0].main)
                 );
               })
               .catch(error => {
-                this.temperature = "N/A";
-                this.cityName = null;
-                // eslint-disable-next-line
-                console.log(error);
+                this.catchWeatherException("N/A", null, error);
               });
             break;
           case "coordinates":
@@ -116,18 +125,15 @@ export default {
                   : process.env.VUE_APP_WEATHER_API_KEY
               })
               .then(() => {
-                this.showWeather = true;
-                this.temperature = ~~this.weather.main.temp;
-                this.cityName = this.weather.name;
-                this.weatherIcon = this.setWeatherIcon(
-                  this.weather.weather[0].main
+                this.saveWeatherData(
+                  true,
+                  ~~this.weather.main.temp,
+                  this.weather.name,
+                  this.setWeatherIcon(this.weather.weather[0].main)
                 );
               })
               .catch(error => {
-                this.temperature = "N/A";
-                this.cityName = null;
-                // eslint-disable-next-line
-                console.log(error);
+                this.catchWeatherException("N/A", null, error);
               });
             break;
           case "id":
@@ -140,18 +146,15 @@ export default {
                   : process.env.VUE_APP_WEATHER_API_KEY
               })
               .then(() => {
-                this.showWeather = true;
-                this.temperature = ~~this.weather.main.temp;
-                this.cityName = this.weather.name;
-                this.weatherIcon = this.setWeatherIcon(
-                  this.weather.weather[0].main
+                this.saveWeatherData(
+                  true,
+                  ~~this.weather.main.temp,
+                  this.weather.name,
+                  this.setWeatherIcon(this.weather.weather[0].main)
                 );
               })
               .catch(error => {
-                this.temperature = "N/A";
-                this.cityName = null;
-                // eslint-disable-next-line
-                console.log(error);
+                this.catchWeatherException("N/A", null, error);
               });
             break;
         }

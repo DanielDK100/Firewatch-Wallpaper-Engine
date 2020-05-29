@@ -20,13 +20,15 @@
 				"order": 0,
 				"text": "<strong>Scheme color:</strong>",
 				"type": "color",
-				"value": "0.12941176470588237 0.27450980392156865. 0.3764705882352941"
+				"value": "0.12941176470588237 0.27450980392156865. 0.3764705882352941",
+				"simple": false
 			},
 			"backgroundType": {
 				"order": 1,
 				"text": "<strong>Background type:</strong>",
 				"type": "combo",
 				"value": "lake",
+				"simple": true,
 				"options": [
 					{
 						"label": "Lake <img src='https://i.ibb.co/VWsMwcj/lake.png' height='30'>",
@@ -43,6 +45,7 @@
 				"text": "<strong>Background alignment:</strong>",
 				"type": "combo",
 				"value": "cover",
+				"simple": true,
 				"options": [
 					{
 						"label": "Cover",
@@ -62,7 +65,8 @@
 				"order": 3,
 				"text": "<strong>Enable audio:</strong>",
 				"type": "bool",
-				"value": false
+				"value": false,
+				"simple": false
 			},
 			"audioVolume": {
 				"order": 4,
@@ -72,20 +76,23 @@
 				"max": 100,
 				"value": 50,
 				"editable": true,
-				"condition": "isAudioPlayerEnabled.value == true"
+				"condition": "isAudioPlayerEnabled.value == true",
+				"simple": false
 			},
 			"isParticleEnabled": {
 				"order": 5,
 				"text": "<strong>Enable particle effect:</strong>",
 				"type": "bool",
-				"value": true
+				"value": true,
+				"simple": true
 			},
 			"isTiltEnabled": {
 				"order": 6,
 				"text": "<strong>Enable tilt hover effect:</strong>",
 				"type": "bool",
 				"value": true,
-				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"simple": false
 			},
 			"clockWeatherPositionX": {
 				"order": 7,
@@ -95,7 +102,8 @@
 				"max": 100,
 				"value": 2,
 				"editable": true,
-				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"simple": true
 			},
 			"clockWeatherPositionY": {
 				"order": 8,
@@ -105,7 +113,8 @@
 				"max": 100,
 				"value": 2,
 				"editable": true,
-				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"simple": true
 			},
 			"clockWeatherTextAlignment": {
 				"order": 9,
@@ -113,6 +122,7 @@
 				"type": "combo",
 				"value": "right",
 				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"simple": true,
 				"options": [
 					{
 						"label": "Align right",
@@ -133,7 +143,8 @@
 				"text": "<strong>Clock & weather color:</strong>",
 				"type": "color",
 				"value": "0.9882352941176471 0.8705882352941177 0.788235294117647",
-				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"simple": false
 			},
 			"clockWeatherFontSize": {
 				"order": 11,
@@ -143,13 +154,15 @@
 				"max": 10,
 				"value": 3,
 				"editable": true,
-				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true"
+				"condition": "isClockEnabled.value == true || isWeatherEnabled.value == true",
+				"simple": true
 			},
 			"isClockEnabled": {
 				"order": 12,
 				"text": "<hr><strong>Enable clock:</strong>",
 				"type": "bool",
-				"value": true
+				"value": true,
+				"simple": true
 			},
 			"locale": {
 				"order": 13,
@@ -157,6 +170,7 @@
 				"type": "combo",
 				"value": "en-gb",
 				"condition": "isClockEnabled.value == true",
+				"simple": true,
 				"options": [
 					{
 						"label": "Afrikaans",
@@ -678,6 +692,7 @@
 				"type": "combo",
 				"value": "lll",
 				"condition": "isClockEnabled.value == true",
+				"simple": true,
 				"options": [
 					{
 						"label": "H:mm:ss",
@@ -705,7 +720,8 @@
 				"order": 15,
 				"text": "<hr><strong>Enable weather:</strong>",
 				"type": "bool",
-				"value": false
+				"value": false,
+				"simple": true
 			},
 			"weatherUnit": {
 				"order": 16,
@@ -713,6 +729,7 @@
 				"type": "combo",
 				"value": "metric",
 				"condition": "isWeatherEnabled.value == true",
+				"simple": true,
 				"options": [
 					{
 						"label": "Celsius",
@@ -730,6 +747,7 @@
 				"type": "combo",
 				"value": "name",
 				"condition": "isWeatherEnabled.value == true",
+				"simple": true,
 				"options": [
 					{
 						"label": "City name",
@@ -750,42 +768,48 @@
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
 				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
-				"value": "London, UK"
+				"value": "London, UK",
+				"simple": true
 			},
 			"weatherLatitude": {
 				"order": 19,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
 				"type": "textinput",
-				"value": 51.5073
+				"value": 51.5073,
+				"simple": true
 			},
 			"weatherLongitude": {
 				"order": 20,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
 				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
 				"type": "textinput",
-				"value": -0.1277
+				"value": -0.1277,
+				"simple": true
 			},
 			"weatherId": {
 				"order": 21,
 				"condition": "weatherFetchByType.value == 'id'",
 				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
 				"type": "textinput",
-				"value": 2643743
+				"value": 2643743,
+				"simple": true
 			},
 			"isCityNameShown": {
 				"order": 22,
 				"text": "<strong>Show city name:</strong>",
 				"type": "bool",
 				"value": true,
-				"condition": "isWeatherEnabled.value == true"
+				"condition": "isWeatherEnabled.value == true",
+				"simple": true
 			},
 			"weatherApiKey": {
 				"order": 23,
 				"condition": "isWeatherEnabled.value == true",
 				"text": "<strong>API key:</strong><em><br>Get your own API key: <a href='https://home.openweathermap.org/api_keys' target='_blank'>OpenWeatherMap API key</a> and paste it here</em>",
 				"type": "textinput",
-				"value": null
+				"value": null,
+				"simple": true
 			}
 		}
 	}
