@@ -4,7 +4,7 @@
     :style="{backgroundColor: schemeColor, backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')', backgroundSize: backgroundAlignment}"
   >
     <preloaded-images :backgroundType="backgroundType"></preloaded-images>
-    <audio-player :properties="properties" @properties="setProperties"></audio-player>
+    <audio-player :pauseStatus="pauseStatus" :properties="properties"></audio-player>
     <vue-particles
       v-show="showParticles"
       color="#FCDEC9"
@@ -27,8 +27,8 @@
         :class="clockWeatherTextAlignment"
         v-tilt="{reverse: true}"
       >
-        <clock @background="setBackground" :properties="properties" @properties="setProperties"></clock>
-        <weather :properties="properties" @properties="setProperties"></weather>
+        <clock @background="setBackground" :properties="properties"></clock>
+        <weather :properties="properties"></weather>
       </div>
     </transition>
   </div>
@@ -51,6 +51,7 @@ export default {
       backgroundAlignment: "cover",
       background: "5_0",
       properties: Object,
+      pauseStatus: false,
       showParticles: true,
       showWidgets: false,
       clockWeatherPositionX: 2,
@@ -127,11 +128,11 @@ export default {
       window.wallpaperPropertyListener = {
         applyUserProperties: properties => {
           this.properties = properties;
+        },
+        setPaused: pauseStatus => {
+          this.pauseStatus = pauseStatus;
         }
       };
-    },
-    setProperties(properties) {
-      this.properties = properties;
     },
     setBackground(background) {
       this.background = background;
