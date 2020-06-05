@@ -9,7 +9,6 @@ export default {
   props: ["properties", "pauseStatus"],
   data() {
     return {
-      showAudioPlayer: false,
       audioPlayer: null,
       isAudioPlayerEnabled: false
     };
