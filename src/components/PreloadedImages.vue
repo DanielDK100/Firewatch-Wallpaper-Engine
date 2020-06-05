@@ -1,5 +1,5 @@
 <template>
-  <div v-show="showPreloadedImages">
+  <div id="preloaded-images">
     <img
       v-for="preloadedImage in preloadedImages"
       :key="preloadedImage.alt + '_' + preloadedImage.backgroundType"
@@ -16,7 +16,6 @@ export default {
   props: ["backgroundType"],
   data() {
     return {
-      showPreloadedImages: false,
       preloadedImages: []
     };
   },

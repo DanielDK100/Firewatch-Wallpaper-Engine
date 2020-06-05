@@ -1,5 +1,5 @@
 <template>
-  <audio v-show="showAudioPlayer" ref="audioPlayer" loop>
+  <audio id="audio-player" ref="audioPlayer" loop>
     <source :src="require('../assets/audios/firewatch_prologue.mp3')" type="audio/mpeg" />Your browser does not support the audio element.
   </audio>
 </template>
@@ -10,7 +10,8 @@ export default {
   data() {
     return {
       showAudioPlayer: false,
-      audioPlayer: null
+      audioPlayer: null,
+      isAudioPlayerEnabled: false
     };
   },
   mounted() {
@@ -23,13 +24,16 @@ export default {
           ? this.audioPlayer.play()
           : this.audioPlayer.pause();
         this.audioPlayer.currentTime = 0;
+        this.isAudioPlayerEnabled = newProperties.isAudioPlayerEnabled.value;
       }
       newProperties.audioVolume
         ? (this.audioPlayer.volume = newProperties.audioVolume.value / 100)
         : null;
     },
     pauseStatus: function(newPauseStatus) {
-      newPauseStatus ? this.audioPlayer.pause() : this.audioPlayer.play();
+      if (this.isAudioPlayerEnabled) {
+        newPauseStatus ? this.audioPlayer.pause() : this.audioPlayer.play();
+      }
     }
   }
 };
