@@ -159,14 +159,14 @@
 			},
 			"isClockEnabled": {
 				"order": 12,
-				"text": "<hr><strong>Enable clock:</strong>",
+				"text": "<strong>Enable clock:</strong>",
 				"type": "bool",
 				"value": true,
 				"simple": true
 			},
 			"locale": {
 				"order": 13,
-				"text": "<strong>Locale:</strong>",
+				"text": "&emsp;<strong>Locale:</strong>",
 				"type": "combo",
 				"value": "en-gb",
 				"condition": "isClockEnabled.value == true",
@@ -688,7 +688,7 @@
 			},
 			"timeFormat": {
 				"order": 14,
-				"text": "<strong>Time format:</strong>",
+				"text": "&emsp;<strong>Time format:</strong>",
 				"type": "combo",
 				"value": "lll",
 				"condition": "isClockEnabled.value == true",
@@ -718,14 +718,14 @@
 			},
 			"isWeatherEnabled": {
 				"order": 15,
-				"text": "<hr><strong>Enable weather:</strong>",
+				"text": "<strong>Enable weather:</strong>",
 				"type": "bool",
 				"value": false,
 				"simple": true
 			},
 			"weatherUnit": {
 				"order": 16,
-				"text": "<strong>Weather unit:</strong>",
+				"text": "&emsp;<strong>Weather unit:</strong>",
 				"type": "combo",
 				"value": "metric",
 				"condition": "isWeatherEnabled.value == true",
@@ -738,12 +738,16 @@
 					{
 						"label": "Fahrenheit",
 						"value": "imperial"
+					},
+					{
+						"label": "Kelvin",
+						"value": "kelvin"
 					}
 				]
 			},
 			"weatherFetchByType": {
 				"order": 17,
-				"text": "<strong>Get weather by location type:</strong>",
+				"text": "&emsp;<strong>Get weather by location type:</strong>",
 				"type": "combo",
 				"value": "name",
 				"condition": "isWeatherEnabled.value == true",
@@ -766,7 +770,7 @@
 			"weatherName": {
 				"order": 18,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'name'",
-				"text": "<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
+				"text": "&emsp;<strong>City name:</strong><em><br>Narrow your search by entering the city name AND the country code in the field (the default is set to find London in the UK)</em>",
 				"type": "textinput",
 				"value": "London, UK",
 				"simple": true
@@ -774,7 +778,7 @@
 			"weatherLatitude": {
 				"order": 19,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
-				"text": "<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
+				"text": "&emsp;<strong>Coordinates (latitude):</strong><em><br>Enter the latitude coordinate</em>",
 				"type": "textinput",
 				"value": 51.5073,
 				"simple": true
@@ -782,7 +786,7 @@
 			"weatherLongitude": {
 				"order": 20,
 				"condition": "isWeatherEnabled.value == true && weatherFetchByType.value == 'coordinates'",
-				"text": "<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
+				"text": "&emsp;<strong>Coordinates (longitude):</strong><em><br>Enter the longitude coordinate</em>",
 				"type": "textinput",
 				"value": -0.1277,
 				"simple": true
@@ -790,14 +794,14 @@
 			"weatherId": {
 				"order": 21,
 				"condition": "weatherFetchByType.value == 'id'",
-				"text": "<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
+				"text": "&emsp;<strong>City ID:</strong><em><br>Enter the city ID used by <a href='https://openweathermap.org/city' target='_blank'>OpenWeatherMap</a></em>",
 				"type": "textinput",
 				"value": 2643743,
 				"simple": true
 			},
 			"isCityNameShown": {
 				"order": 22,
-				"text": "<strong>Show city name:</strong>",
+				"text": "&emsp;<strong>Show city name:</strong>",
 				"type": "bool",
 				"value": true,
 				"condition": "isWeatherEnabled.value == true",
@@ -806,7 +810,7 @@
 			"weatherApiKey": {
 				"order": 23,
 				"condition": "isWeatherEnabled.value == true",
-				"text": "<strong>API key:</strong><em><br>Get your own API key: <a href='https://home.openweathermap.org/api_keys' target='_blank'>OpenWeatherMap API key</a> and paste it here</em>",
+				"text": "&emsp;<strong>API key:</strong><em><br>Get your own API key: <a href='https://home.openweathermap.org/api_keys' target='_blank'>OpenWeatherMap API key</a> and paste it here</em>",
 				"type": "textinput",
 				"value": null,
 				"simple": true
