@@ -4,17 +4,6 @@ module.exports = {
   publicPath: './',
   productionSourceMap: false,
   configureWebpack: {
-    module: {
-      rules: [
-        {
-          test: /\.(weba)$/i,
-          loader: 'file-loader',
-          options: {
-            outputPath: 'audios'
-          },
-        },
-      ],
-    },
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
