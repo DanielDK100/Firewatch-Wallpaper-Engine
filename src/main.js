@@ -1,6 +1,4 @@
 import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 import './assets/scss/styles.scss'
 import store from './store/store.js'
 import VueParticles from 'vue-particles'
@@ -11,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import App from './App.vue'
 
 Vue.config.productionTip = false
-Vue.use(VueAxios, axios)
 Vue.use(VueParticles)
 Vue.use(VueTilt)
 
