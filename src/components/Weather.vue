@@ -1,6 +1,9 @@
 <template>
   <div id="weather-container" v-show="showWeather">
-    <font-awesome-icon :icon="weatherIcon" transform="shrink-2"></font-awesome-icon>
+    <font-awesome-icon
+      :icon="weatherIcon"
+      transform="shrink-2"
+    ></font-awesome-icon>
     <div id="temperature" v-text="temperature + '°'"></div>
     <div id="city-name" v-show="showCityName" v-text="cityName"></div>
   </div>
@@ -29,15 +32,15 @@ export default {
         name: "London, UK",
         latitude: 51.5073,
         longitude: -0.1277,
-        id: 2643743
-      }
+        id: 2643743,
+      },
     };
   },
   computed: {
-    ...mapState(["weather"])
+    ...mapState(["weather"]),
   },
   watch: {
-    properties: function(newProperties) {
+    properties: function (newProperties) {
       newProperties.isWeatherEnabled
         ? (this.showWeather = newProperties.isWeatherEnabled.value)
         : null;
@@ -67,7 +70,7 @@ export default {
         : null;
       this.fetchWeather();
     },
-    weatherApiKey: function() {
+    weatherApiKey: function () {
       clearInterval(this.refreshId);
       this.startWeatherInterval(
         this.weatherApiKey
@@ -75,7 +78,7 @@ export default {
           : moment.duration(3, "hours").asMilliseconds() +
               this.generateRandomNumber(-5, 11)
       );
-    }
+    },
   },
   methods: {
     saveWeatherData(showWeather, temperature, cityName, weatherIcon) {
@@ -90,7 +93,7 @@ export default {
       // eslint-disable-next-line
       console.log(error);
     },
-    fetchWeather: function() {
+    fetchWeather: function () {
       if (this.showWeather) {
         switch (this.cityObject.type) {
           case "name":
@@ -100,7 +103,7 @@ export default {
                 unit: this.unit,
                 apiKey: this.weatherApiKey
                   ? this.weatherApiKey
-                  : process.env.VUE_APP_WEATHER_API_KEY
+                  : process.env.VUE_APP_WEATHER_API_KEY,
               })
               .then(() => {
                 this.saveWeatherData(
@@ -110,7 +113,7 @@ export default {
                   this.setWeatherIcon(this.weather.weather[0].main)
                 );
               })
-              .catch(error => {
+              .catch((error) => {
                 this.catchWeatherException("N/A", null, error);
               });
             break;
@@ -122,7 +125,7 @@ export default {
                 unit: this.unit,
                 apiKey: this.weatherApiKey
                   ? this.weatherApiKey
-                  : process.env.VUE_APP_WEATHER_API_KEY
+                  : process.env.VUE_APP_WEATHER_API_KEY,
               })
               .then(() => {
                 this.saveWeatherData(
@@ -132,7 +135,7 @@ export default {
                   this.setWeatherIcon(this.weather.weather[0].main)
                 );
               })
-              .catch(error => {
+              .catch((error) => {
                 this.catchWeatherException("N/A", null, error);
               });
             break;
@@ -143,7 +146,7 @@ export default {
                 unit: this.unit,
                 apiKey: this.weatherApiKey
                   ? this.weatherApiKey
-                  : process.env.VUE_APP_WEATHER_API_KEY
+                  : process.env.VUE_APP_WEATHER_API_KEY,
               })
               .then(() => {
                 this.saveWeatherData(
@@ -153,14 +156,14 @@ export default {
                   this.setWeatherIcon(this.weather.weather[0].main)
                 );
               })
-              .catch(error => {
+              .catch((error) => {
                 this.catchWeatherException("N/A", null, error);
               });
             break;
         }
       }
     },
-    setWeatherIcon: function(icon) {
+    setWeatherIcon: function (icon) {
       const currentHour = moment().format("k");
       const cloudRain = "cloud-rain";
       const smog = "smog";
@@ -184,10 +187,10 @@ export default {
         Tornado: wind,
         Clear: "sun",
         Clouds: "cloud",
-        Moon: "moon"
+        Moon: "moon",
       }[icon];
     },
-    startWeatherInterval: function(duration) {
+    startWeatherInterval: function (duration) {
       setTimeout(
         () => this.fetchWeather(),
         moment.duration(1, "seconds").asMilliseconds()
@@ -195,7 +198,7 @@ export default {
       this.refreshId = setInterval(() => {
         this.fetchWeather();
       }, duration);
-    }
-  }
+    },
+  },
 };
 </script>

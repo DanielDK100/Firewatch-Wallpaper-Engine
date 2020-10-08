@@ -1,6 +1,10 @@
 <template>
   <audio id="audio-player" ref="audioPlayer" loop>
-    <source :src="require('../assets/audios/firewatch_prologue.mp3')" type="audio/mpeg" />Your browser does not support the audio element.
+    <source
+      :src="require('../assets/audios/firewatch_prologue.mp3')"
+      type="audio/mpeg"
+    />
+    Your browser does not support the audio element.
   </audio>
 </template>
 

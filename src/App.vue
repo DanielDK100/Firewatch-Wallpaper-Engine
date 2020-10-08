@@ -1,10 +1,24 @@
 <template>
   <div
     id="app"
-    :style="{backgroundColor: schemeColor, backgroundImage: 'url(' + require('./assets/images/' + backgroundType + '/' + background + '.webp') + ')', backgroundSize: backgroundAlignment}"
+    :style="{
+      backgroundColor: schemeColor,
+      backgroundImage:
+        'url(' +
+        require('./assets/images/' +
+          backgroundType +
+          '/' +
+          background +
+          '.webp') +
+        ')',
+      backgroundSize: backgroundAlignment,
+    }"
   >
     <preloaded-images :backgroundType="backgroundType"></preloaded-images>
-    <audio-player :pauseStatus="pauseStatus" :properties="properties"></audio-player>
+    <audio-player
+      :pauseStatus="pauseStatus"
+      :properties="properties"
+    ></audio-player>
     <vue-particles
       v-show="showParticles"
       color="#FCDEC9"
@@ -18,14 +32,19 @@
       :clickEffect="true"
       clickMode="repulse"
     ></vue-particles>
-    <transition :style="{backgroundColor: schemeColor}" name="slide">
+    <transition :style="{ backgroundColor: schemeColor }" name="slide">
       <div
         id="container"
         ref="container"
         v-show="showWidgets"
-        :style="{right: clockWeatherPositionX  + 'vw', top: clockWeatherPositionY + 'vw', color: clockWeatherColor, fontSize: clockWeatherFontSize + 'vw'}"
+        :style="{
+          right: clockWeatherPositionX + 'vw',
+          top: clockWeatherPositionY + 'vw',
+          color: clockWeatherColor,
+          fontSize: clockWeatherFontSize + 'vw',
+        }"
         :class="clockWeatherTextAlignment"
-        v-tilt="{reverse: true}"
+        v-tilt="{ reverse: true }"
       >
         <clock @background="setBackground" :properties="properties"></clock>
         <weather :properties="properties"></weather>
@@ -58,20 +77,20 @@ export default {
       clockWeatherPositionY: 2,
       clockWeatherTextAlignment: "right",
       clockWeatherColor: "rgb(252, 222, 201)",
-      clockWeatherFontSize: "3"
+      clockWeatherFontSize: "3",
     };
   },
   components: {
     PreloadedImages,
     AudioPlayer,
     Clock,
-    Weather
+    Weather,
   },
   watch: {
-    properties: function(newProperties) {
+    properties: function (newProperties) {
       if (newProperties.schemecolor) {
         let schemeColor = newProperties.schemecolor.value.split(" ");
-        schemeColor = schemeColor.map(function(color) {
+        schemeColor = schemeColor.map(function (color) {
           return Math.ceil(color * 255);
         });
         this.schemeColor = "rgb(" + schemeColor + ")";
@@ -107,7 +126,7 @@ export default {
         let clockWeatherColor = newProperties.clockWeatherColor.value.split(
           " "
         );
-        clockWeatherColor = clockWeatherColor.map(function(color) {
+        clockWeatherColor = clockWeatherColor.map(function (color) {
           return Math.ceil(color * 255);
         });
         this.clockWeatherColor = "rgb(" + clockWeatherColor + ")";
@@ -115,7 +134,7 @@ export default {
       newProperties.clockWeatherFontSize
         ? (this.clockWeatherFontSize = newProperties.clockWeatherFontSize.value)
         : null;
-    }
+    },
   },
   created() {
     this.initializeWallpaperPropertyListener();
@@ -126,17 +145,17 @@ export default {
   methods: {
     initializeWallpaperPropertyListener() {
       window.wallpaperPropertyListener = {
-        applyUserProperties: properties => {
+        applyUserProperties: (properties) => {
           this.properties = properties;
         },
-        setPaused: pauseStatus => {
+        setPaused: (pauseStatus) => {
           this.pauseStatus = pauseStatus;
-        }
+        },
       };
     },
     setBackground(background) {
       this.background = background;
-    }
-  }
+    },
+  },
 };
 </script>

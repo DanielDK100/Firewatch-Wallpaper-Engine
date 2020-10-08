@@ -31,12 +31,16 @@
 				"simple": true,
 				"options": [
 					{
-						"label": "Lake <img src='https://i.ibb.co/VWsMwcj/lake.png' height='30'>",
+						"label": "Lake",
 						"value": "lake"
 					},
 					{
-						"label": "Watchtower <img src='https://i.ibb.co/6mkn4Qd/watchtower.png' height='30'>",
-						"value": "watchtower"
+						"label": "Watchtower distant",
+						"value": "watchtower_distant"
+					},
+					{
+						"label": "Watchtower close-up",
+						"value": "watchtower_close-up"
 					}
 				]
 			},

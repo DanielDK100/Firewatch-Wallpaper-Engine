@@ -14,11 +14,11 @@ export default {
       showClock: true,
       clock: null,
       locale: "en-gb",
-      timeFormat: "lll"
+      timeFormat: "lll",
     };
   },
   watch: {
-    properties: function(newProperties) {
+    properties: function (newProperties) {
       newProperties.isClockEnabled
         ? (this.showClock = newProperties.isClockEnabled.value)
         : null;
@@ -26,7 +26,7 @@ export default {
       newProperties.timeFormat
         ? (this.timeFormat = newProperties.timeFormat.value)
         : null;
-    }
+    },
   },
   created() {
     const now = moment().locale(this.locale);
@@ -43,7 +43,7 @@ export default {
     );
   },
   methods: {
-    startClockInterval: function(roundedTime, now, duration) {
+    startClockInterval: function (roundedTime, now, duration) {
       this.setBackground(roundedTime);
       this.setClock(now);
       if (process.env.VUE_APP_TESTING === "true") {
@@ -65,12 +65,12 @@ export default {
         this.setClock(now);
       }, duration);
     },
-    setClock: function(now) {
+    setClock: function (now) {
       this.clock = now.format(this.timeFormat);
     },
-    setBackground: function(roundedTime) {
+    setBackground: function (roundedTime) {
       this.$emit("background", roundedTime.format("k_m"));
-    }
-  }
+    },
+  },
 };
 </script>
